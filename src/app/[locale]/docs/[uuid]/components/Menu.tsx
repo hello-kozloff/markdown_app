@@ -5,7 +5,10 @@ import type { MarkType } from "prosemirror-model";
 import type { EditorState } from "prosemirror-state";
 import type { ReactNode } from "react";
 import React from "react";
-import { useEditorEventCallback, useEditorState } from "@handlewithcare/react-prosemirror";
+import {
+  useEditorEventCallback,
+  useEditorState
+} from "@handlewithcare/react-prosemirror";
 
 // lifted from:
 // https://github.com/ProseMirror/prosemirror-example-setup/blob/master/src/menu.ts#L58
