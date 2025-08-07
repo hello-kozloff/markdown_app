@@ -1,9 +1,13 @@
-import { hasLocale, NextIntlClientProvider } from "next-intl";
+import {
+  hasLocale,
+  NextIntlClientProvider
+} from "next-intl";
 import { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { routing } from "@/shared/i18n/routing";
 import { GeistSans } from "geist/font/sans";
 import "@/styles/stylesheet.css";
+import { ThemeProvider } from "@/shared/ui/theme-provider";
 
 export default async function LocaleLayout({
   children,
@@ -24,10 +28,18 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       className={GeistSans.className}
+      suppressHydrationWarning
     >
       <body>
         <NextIntlClientProvider>
-          {children}
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            disableTransitionOnChange
+            enableSystem
+          >
+            {children}
+          </ThemeProvider>
         </NextIntlClientProvider>
       </body>
     </html>
