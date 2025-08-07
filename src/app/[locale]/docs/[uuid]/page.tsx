@@ -1,7 +1,11 @@
+"use client";
+
+import { DemoEditor } from "./components/main";
+
 export default function DocumentPage() {
   return (
     <div>
-      <h1>Документ</h1>
+      <DemoEditor />
     </div>
   );
 }
