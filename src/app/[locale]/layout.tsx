@@ -5,6 +5,7 @@ import {
 import { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { routing } from "@/shared/i18n/routing";
+import "@/styles/stylesheet.css";
 
 export default async function LocaleLayout({
   children,
