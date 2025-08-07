@@ -1,10 +1,8 @@
-import {
-  hasLocale,
-  NextIntlClientProvider
-} from "next-intl";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { routing } from "@/shared/i18n/routing";
+import { GeistSans } from "geist/font/sans";
 import "@/styles/stylesheet.css";
 
 export default async function LocaleLayout({
@@ -23,7 +21,10 @@ export default async function LocaleLayout({
   }
 
   return (
-    <html lang={locale}>
+    <html
+      lang={locale}
+      className={GeistSans.className}
+    >
       <body>
         <NextIntlClientProvider>
           {children}
