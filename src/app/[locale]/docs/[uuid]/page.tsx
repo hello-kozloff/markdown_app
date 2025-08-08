@@ -12,7 +12,7 @@ const content = `
 export default function DocumentPage() {
   return (
     <MarkdownEditor
-      markdown={content}
+      initialMarkdown={content}
     />
   );
 }
