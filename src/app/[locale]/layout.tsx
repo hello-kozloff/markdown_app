@@ -1,15 +1,12 @@
-import {
-  hasLocale,
-  NextIntlClientProvider
-} from "next-intl";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { routing } from "@/shared/i18n/routing";
 import { GeistSans } from "geist/font/sans";
-import "@/styles/stylesheet.css";
 import { ThemeProvider } from "@/shared/ui/theme-provider";
+import "@/shared/styles/stylesheet.css";
 
-export default async function LocaleLayout({
+export default async function RootLayout({
   children,
   params
 }: {
