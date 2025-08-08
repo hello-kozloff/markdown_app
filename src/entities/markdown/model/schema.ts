@@ -38,6 +38,16 @@ export const schema = new Schema({
           tag: "strong"
         }
       ]
+    },
+    em: {
+      toDOM() {
+        return ["em"];
+      },
+      parseDOM: [
+        {
+          tag: "em"
+        }
+      ]
     }
   }
 });

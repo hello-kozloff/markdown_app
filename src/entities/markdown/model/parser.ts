@@ -23,6 +23,9 @@ export async function parseMarkdownToProseMirrorDoc(
         ),
         strong: toPmMark(
           schema.marks.strong
+        ),
+        emphasis: toPmMark(
+          schema.marks.em
         )
       }
     })
