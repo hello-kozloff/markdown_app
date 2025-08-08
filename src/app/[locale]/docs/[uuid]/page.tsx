@@ -19,14 +19,20 @@ const content = `
 
   > Dorothy followed her through many of the beautiful rooms in her castle.
   
+  > Dorothy followed her through many of the beautiful rooms in her castle.
+  >
+  >> The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.
+  
   ![The San Juan Mountains are beautiful!](https://mdg.imgix.net/assets/images/san-juan-mountains.jpg?auto=format&fit=clip&q=40&w=1080 "San Juan Mountains")
 
 `;
 
 export default function DocumentPage() {
   return (
-    <MarkdownEditor
-      initialMarkdown={content}
-    />
+    <div className="flex justify-center">
+      <MarkdownEditor
+        initialMarkdown={content}
+      />
+    </div>
   );
 }
