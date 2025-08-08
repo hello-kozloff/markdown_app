@@ -1,52 +1,22 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React from "react";
 import { ProseMirror, ProseMirrorDoc } from "@handlewithcare/react-prosemirror";
-import { EditorState, Transaction } from "prosemirror-state";
-import { proseMirrorStatePlugins, proseMirrorViewPlugins } from "../model/plugins";
-import { schema } from "../model/schema";
-import { parseMarkdownToProseMirrorDoc } from "../model/parser";
+import { useMarkdownEditor, UseMarkdownEditorOptions } from "../hooks/use-markdown-editor";
+import { proseMirrorViewPlugins } from "../model/plugins";
 
-export interface MarkdownEditorProps {
-  initialMarkdown: string;
-}
+export type MarkdownEditorProps = Pick<
+  UseMarkdownEditorOptions,
+  "initialMarkdown"
+>;
 
 export function MarkdownEditor({
   initialMarkdown
 }: MarkdownEditorProps) {
-  const [editorState, setEditorState] =
-    useState<EditorState | null>(null);
-
-  useEffect(() => {
-    (async () => {
-      const doc =
-        await parseMarkdownToProseMirrorDoc(
-          initialMarkdown
-        );
-
-      setEditorState(
-        EditorState.create({
-          schema,
-          doc,
-          plugins:
-            proseMirrorStatePlugins
-        })
-      );
-    })();
-  }, [initialMarkdown]);
-
-  const dispatchTransaction =
-    useCallback(
-      (transaction: Transaction) => {
-        if (!editorState) return;
-
-        const newState =
-          editorState.apply(
-            transaction
-          );
-
-        setEditorState(newState);
-      },
-      [editorState]
-    );
+  const {
+    editorState,
+    dispatchTransaction
+  } = useMarkdownEditor({
+    initialMarkdown
+  });
 
   if (!editorState) {
     return (
