@@ -14,6 +14,8 @@ const content = `
   I just love **bold text**.
   
   Italicized text is the *cat's meow*.
+
+  At the command prompt, type \`nano\`.
   
   My favorite search engine is [Duck Duck Go](https://duckduckgo.com).
 
