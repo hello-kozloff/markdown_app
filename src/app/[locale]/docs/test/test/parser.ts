@@ -8,49 +8,53 @@ import remarkParse from "remark-parse";
 import { unified } from "unified";
 import { content } from "./content";
 import { schema } from "./schema";
+import {
+  Heading,
+  Image,
+  Link
+} from "mdast";
 
 const remarkProseMirrorOptions: RemarkProseMirrorOptions =
   {
     schema,
     handlers: {
-      paragraph: toPmNode(
-        schema.nodes.paragraph
-      ),
       heading: toPmNode(
         schema.nodes.heading,
-        (node) => ({
+        (node: Heading) => ({
           level: node.depth
         })
       ),
-      code(node) {
-        return schema.nodes.code_block.create(
-          {},
-          schema.text(node.value)
-        );
-      },
-      image: toPmNode(
-        schema.nodes.image,
-        (node) => ({
-          url: node.url
-        })
+      paragraph: toPmNode(
+        schema.nodes.paragraph
+      ),
+      strong: toPmMark(
+        schema.marks.strong
       ),
       emphasis: toPmMark(
         schema.marks.em
       ),
-      strong: toPmMark(
-        schema.marks.strong
+      link: toPmMark(
+        schema.marks.link,
+        (node: Link) => ({
+          url: node.url
+        })
+      ),
+      image: toPmNode(
+        schema.nodes.image,
+        (node: Image) => ({
+          src: node.url,
+          alt: node.alt,
+          title: node.title
+        })
+      ),
+      blockquote: toPmNode(
+        schema.nodes.blockquote
       ),
       inlineCode(node) {
         return schema.text(node.value, [
           schema.marks.code.create()
         ]);
       },
-      link: toPmMark(
-        schema.marks.link,
-        (node) => ({
-          url: node.url
-        })
-      ),
       thematicBreak: toPmNode(
         schema.nodes.paragraph
       )
