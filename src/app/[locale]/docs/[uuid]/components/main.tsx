@@ -98,7 +98,7 @@ export function DemoEditor() {
     }, []);
 
   return (
-    <main>
+    <main className="prose">
       <ProseMirror
         className="ProseMirror"
         state={state}
