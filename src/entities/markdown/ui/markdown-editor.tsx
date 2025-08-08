@@ -1,6 +1,14 @@
+"use client";
+
 import React from "react";
-import { ProseMirror, ProseMirrorDoc } from "@handlewithcare/react-prosemirror";
-import { useMarkdownEditor, UseMarkdownEditorOptions } from "../hooks/use-markdown-editor";
+import {
+  ProseMirror,
+  ProseMirrorDoc
+} from "@handlewithcare/react-prosemirror";
+import {
+  useMarkdownEditor,
+  UseMarkdownEditorOptions
+} from "../hooks/use-markdown-editor";
 import { proseMirrorViewPlugins } from "../model/plugins";
 
 export type MarkdownEditorProps = Pick<

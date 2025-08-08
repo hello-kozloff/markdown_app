@@ -1,5 +1,3 @@
-"use client";
-
 import { MarkdownEditor } from "@/entities/markdown";
 
 const content = `
