@@ -1,13 +1,5 @@
-import {
-  remarkProseMirror,
-  toPmMark,
-  toPmNode
-} from "@handlewithcare/remark-prosemirror";
-import {
-  Heading,
-  Image,
-  Link
-} from "mdast";
+import { remarkProseMirror, toPmMark, toPmNode } from "@handlewithcare/remark-prosemirror";
+import { Heading, Image, Link } from "mdast";
 import remarkParse from "remark-parse";
 import { unified } from "unified";
 import { schema } from "./schema";
@@ -57,7 +49,10 @@ export async function parseMarkdownToProseMirrorDoc(
             node.value,
             [schema.marks.code.create()]
           );
-        }
+        },
+        thematicBreak: toPmNode(
+          schema.nodes.paragraph
+        )
       }
     })
     .process(markdown);
