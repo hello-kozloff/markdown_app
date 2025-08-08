@@ -19,6 +19,13 @@ export const schema = new Schema({
           0
         ];
       }
+    },
+    paragraph: {
+      group: "block",
+      content: "inline*",
+      toDOM() {
+        return ["p", 0];
+      }
     }
   }
 });

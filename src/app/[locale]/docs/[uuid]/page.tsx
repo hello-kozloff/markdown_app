@@ -9,6 +9,8 @@ const content = `
   ##### Заголовок четвёртого уровня (h5)
   ###### Заголовок четвёртого уровня (h6)
   
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, soluta!
+  
 `;
 
 export default function DocumentPage() {
