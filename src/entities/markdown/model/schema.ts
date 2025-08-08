@@ -48,6 +48,32 @@ export const schema = new Schema({
           tag: "em"
         }
       ]
+    },
+    link: {
+      attrs: {
+        url: {
+          default: "",
+          validate: "string"
+        }
+      },
+      toDOM(mark) {
+        return [
+          "a",
+          { href: mark.attrs.url }
+        ];
+      },
+      parseDOM: [
+        {
+          tag: "a",
+          getAttrs(node) {
+            return {
+              url: (
+                node as HTMLAnchorElement
+              ).href
+            };
+          }
+        }
+      ]
     }
   }
 });

@@ -15,6 +15,8 @@ const content = `
   
   Italicized text is the *cat's meow*.
   
+  My favorite search engine is [Duck Duck Go](https://duckduckgo.com).
+  
 `;
 
 export default function DocumentPage() {
