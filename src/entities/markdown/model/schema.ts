@@ -27,22 +27,22 @@ export const schema = new Schema({
       }
     },
     image: {
-      group: "block",
+      inline: true,
+      group: "inline",
+      draggable: true,
       attrs: {
-        url: {
-          default: "",
-          validate: "string"
-        }
+        src: { default: "" },
+        alt: { default: "" },
+        title: { default: "" }
       },
       toDOM(node) {
         return [
-          "div",
-          [
-            "img",
-            {
-              src: node.attrs.url
-            }
-          ]
+          "img",
+          {
+            src: node.attrs.src,
+            alt: node.attrs.alt,
+            title: node.attrs.title
+          }
         ];
       }
     },
