@@ -16,8 +16,11 @@ const content = `
   Italicized text is the *cat's meow*.
   
   My favorite search engine is [Duck Duck Go](https://duckduckgo.com).
+
+  > Dorothy followed her through many of the beautiful rooms in her castle.
   
   ![The San Juan Mountains are beautiful!](https://mdg.imgix.net/assets/images/san-juan-mountains.jpg?auto=format&fit=clip&q=40&w=1080 "San Juan Mountains")
+
 `;
 
 export default function DocumentPage() {

@@ -65,6 +65,15 @@ export const schema = new Schema({
           }
         }
       ]
+    },
+    blockquote: {
+      content: "block+",
+      group: "block",
+      defining: true,
+      toDOM() {
+        return ["blockquote", 0];
+      },
+      parseDOM: [{ tag: "blockquote" }]
     }
   },
   marks: {

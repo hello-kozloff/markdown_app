@@ -40,6 +40,9 @@ export async function parseMarkdownToProseMirrorDoc(
             alt: node.alt,
             title: node.title
           })
+        ),
+        blockquote: toPmNode(
+          schema.nodes.blockquote
         )
       }
     })
