@@ -1,5 +1,4 @@
 import { Schema } from "prosemirror-model";
-import { tableNodes } from "prosemirror-tables";
 
 export const schema = new Schema({
   nodes: {
@@ -25,31 +24,6 @@ export const schema = new Schema({
           `h${node.attrs.level}`,
           0
         ];
-      }
-    },
-    ...tableNodes({
-      cellContent: "paragraph",
-      cellAttributes: {},
-      tableGroup: "block"
-    }),
-    list: {
-      group: "block",
-      content: "list_item+",
-      toDOM() {
-        return ["ul", 0];
-      }
-    },
-    list_item: {
-      content: "paragraph+",
-      toDOM() {
-        return ["li", 0];
-      }
-    },
-    code_block: {
-      group: "block",
-      content: "text*",
-      toDOM() {
-        return ["pre", ["code", 0]];
       }
     },
     image: {
