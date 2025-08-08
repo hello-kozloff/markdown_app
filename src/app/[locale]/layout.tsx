@@ -1,9 +1,9 @@
-import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { hasLocale } from "next-intl";
 import { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { routing } from "@/shared/i18n/routing";
 import { GeistSans } from "geist/font/sans";
-import { ThemeProvider } from "@/shared/ui/theme-provider";
+import { Providers } from "./providers";
 import "@/shared/styles/stylesheet.css";
 
 export default async function RootLayout({
@@ -28,16 +28,9 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body>
-        <NextIntlClientProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="light"
-            disableTransitionOnChange
-            enableSystem
-          >
-            {children}
-          </ThemeProvider>
-        </NextIntlClientProvider>
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );
