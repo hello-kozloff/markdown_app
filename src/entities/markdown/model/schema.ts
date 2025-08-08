@@ -26,6 +26,45 @@ export const schema = new Schema({
       toDOM() {
         return ["p", 0];
       }
+    },
+    image: {
+      inline: true,
+      group: "inline",
+      draggable: true,
+      attrs: {
+        src: { default: "" },
+        alt: { default: "" },
+        title: { default: "" }
+      },
+      toDOM(node) {
+        return [
+          "img",
+          {
+            src: node.attrs.src,
+            alt: node.attrs.alt,
+            title: node.attrs.title
+          }
+        ];
+      },
+      parseDOM: [
+        {
+          tag: "img[src]",
+          getAttrs(dom) {
+            const el =
+              dom as HTMLImageElement;
+            return {
+              src: el.getAttribute(
+                "src"
+              ),
+              alt: el.getAttribute(
+                "alt"
+              ),
+              title:
+                el.getAttribute("title")
+            };
+          }
+        }
+      ]
     }
   },
   marks: {
