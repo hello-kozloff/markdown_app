@@ -11,6 +11,8 @@ const content = `
   
   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, soluta!
   
+  I just love **bold text**.
+  
 `;
 
 export default function DocumentPage() {

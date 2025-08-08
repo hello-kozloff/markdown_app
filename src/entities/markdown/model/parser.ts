@@ -1,8 +1,8 @@
-import { remarkProseMirror, toPmNode } from "@handlewithcare/remark-prosemirror";
 import remarkParse from "remark-parse";
 import { unified } from "unified";
 import { Heading } from "mdast";
 import { schema } from "./schema";
+import { remarkProseMirror, toPmMark, toPmNode } from "@handlewithcare/remark-prosemirror";
 
 export async function parseMarkdownToProseMirrorDoc(
   markdown: string
@@ -20,6 +20,9 @@ export async function parseMarkdownToProseMirrorDoc(
         ),
         paragraph: toPmNode(
           schema.nodes.paragraph
+        ),
+        strong: toPmMark(
+          schema.marks.strong
         )
       }
     })

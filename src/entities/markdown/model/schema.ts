@@ -27,5 +27,17 @@ export const schema = new Schema({
         return ["p", 0];
       }
     }
+  },
+  marks: {
+    strong: {
+      toDOM() {
+        return ["strong"];
+      },
+      parseDOM: [
+        {
+          tag: "strong"
+        }
+      ]
+    }
   }
 });
