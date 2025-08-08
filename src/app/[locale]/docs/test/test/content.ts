@@ -1,6 +1,4 @@
-import { MarkdownEditor } from "@/entities/markdown";
-
-const content = `
+export const content = `
   # Заголовок первого уровня (h1)
   
   ## Заголовок второго уровня (h2)
@@ -12,9 +10,9 @@ const content = `
   ##### Заголовок четвёртого уровня (h5)
   
   ###### Заголовок четвёртого уровня (h6)
-  
+ 
   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, soluta!
-  
+
   I just love **bold text**.
   
   Italicized text is the *cat's meow*.
@@ -25,13 +23,3 @@ const content = `
   
   ![The San Juan Mountains are beautiful!](https://mdg.imgix.net/assets/images/san-juan-mountains.jpg?auto=format&fit=clip&q=40&w=1080 "San Juan Mountains")
 `;
-
-export default function DocumentPage() {
-  return (
-    <div className="flex justify-center">
-      <MarkdownEditor
-        initialMarkdown={content}
-      />
-    </div>
-  );
-}
