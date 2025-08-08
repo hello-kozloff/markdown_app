@@ -1,45 +1,23 @@
-"use client";
-
-import {
-  baseKeymap,
-  toggleMark
-} from "prosemirror-commands";
-import { gapCursor } from "prosemirror-gapcursor";
-import "prosemirror-gapcursor/style/gapcursor.css";
-import {
-  history,
-  redo,
-  undo
-} from "prosemirror-history";
-import {
-  inputRules,
-  wrappingInputRule
-} from "prosemirror-inputrules";
-import { keymap } from "prosemirror-keymap";
-import {
-  EditorState,
-  Transaction
-} from "prosemirror-state";
-import {
-  columnResizing,
-  tableEditing
-} from "prosemirror-tables";
-import "prosemirror-tables/style/tables.css";
-import "prosemirror-view/style/prosemirror.css";
 import React, {
   useCallback,
   useState
 } from "react";
-import { LinkTooltip } from "./LinkTooltip";
-import Menu from "./Menu";
-import { doc } from "./doc";
-import { CodeBlock } from "./nodeViews/CodeBlock";
-import { schema } from "./schema";
+import {
+  inputRules,
+  wrappingInputRule
+} from "prosemirror-inputrules";
 import {
   ProseMirror,
-  ProseMirrorDoc,
-  reactKeys
+  ProseMirrorDoc
 } from "@handlewithcare/react-prosemirror";
+import {
+  EditorState,
+  Transaction
+} from "prosemirror-state";
+import { baseKeymap } from "prosemirror-commands";
+import { keymap } from "prosemirror-keymap";
+import { schema } from "./schema";
+import { doc } from "./doc";
 
 const editorState = EditorState.create({
   schema,
@@ -52,67 +30,34 @@ const editorState = EditorState.create({
           schema.nodes.list
         )
       ]
-    }),
-    columnResizing(),
-    tableEditing(),
-    history(),
-    reactKeys()
+    })
   ]
 });
-
-const plugins = [
-  keymap({
-    ...baseKeymap,
-    "Mod-i": toggleMark(
-      schema.marks.em
-    ),
-    "Mod-b": toggleMark(
-      schema.marks.strong
-    ),
-    "Mod-Shift-c": toggleMark(
-      schema.marks.code
-    ),
-    "Mod-z": undo,
-    "Mod-Shift-z": redo,
-    "Mod-y": redo
-  }),
-  gapCursor()
-];
-
-const nodeViews = {
-  code_block: CodeBlock
-};
 
 export function DemoEditor() {
   const [state, setState] = useState(
     editorState
   );
 
-  const dispatchTransaction =
-    useCallback(function (
-      tr: Transaction
+  const dispatch = useCallback(
+    function (
+      transaction: Transaction
     ) {
       setState((prev) => {
-        return prev.apply(tr);
+        return prev.apply(transaction);
       });
-    }, []);
+    },
+    []
+  );
 
   return (
     <main className="prose">
       <ProseMirror
-        className="ProseMirror"
         state={state}
-        dispatchTransaction={
-          dispatchTransaction
-        }
-        nodeViews={nodeViews}
-        plugins={plugins}
+        dispatchTransaction={dispatch}
+        plugins={[keymap(baseKeymap)]}
       >
-        <Menu />
-        <ProseMirrorDoc
-          spellCheck={false}
-        />
-        <LinkTooltip />
+        <ProseMirrorDoc />
       </ProseMirror>
     </main>
   );
