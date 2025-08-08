@@ -3,7 +3,13 @@ import { Schema } from "prosemirror-model";
 export const schema = new Schema({
   nodes: {
     doc: { content: "block+" },
-    text: { group: "inline" },
+    paragraph: {
+      group: "block",
+      content: "inline*",
+      toDOM() {
+        return ["p", 0];
+      }
+    },
     heading: {
       group: "block",
       content: "inline*",
@@ -20,63 +26,39 @@ export const schema = new Schema({
         ];
       }
     },
-    paragraph: {
-      group: "block",
-      content: "inline*",
-      toDOM() {
-        return ["p", 0];
-      }
-    },
     image: {
-      inline: true,
-      group: "inline",
-      draggable: true,
+      group: "block",
       attrs: {
-        src: { default: "" },
-        alt: { default: "" },
-        title: { default: "" }
+        url: {
+          default: "",
+          validate: "string"
+        }
       },
       toDOM(node) {
         return [
-          "img",
-          {
-            src: node.attrs.src,
-            alt: node.attrs.alt,
-            title: node.attrs.title
-          }
+          "div",
+          [
+            "img",
+            {
+              src: node.attrs.url
+            }
+          ]
         ];
+      }
+    },
+    text: { group: "inline" }
+  },
+  marks: {
+    em: {
+      toDOM() {
+        return ["em"];
       },
       parseDOM: [
         {
-          tag: "img[src]",
-          getAttrs(dom) {
-            const el =
-              dom as HTMLImageElement;
-            return {
-              src: el.getAttribute(
-                "src"
-              ),
-              alt: el.getAttribute(
-                "alt"
-              ),
-              title:
-                el.getAttribute("title")
-            };
-          }
+          tag: "em"
         }
       ]
     },
-    blockquote: {
-      content: "block+",
-      group: "block",
-      defining: true,
-      toDOM() {
-        return ["blockquote", 0];
-      },
-      parseDOM: [{ tag: "blockquote" }]
-    }
-  },
-  marks: {
     strong: {
       toDOM() {
         return ["strong"];
@@ -87,13 +69,20 @@ export const schema = new Schema({
         }
       ]
     },
-    em: {
+    code: {
       toDOM() {
-        return ["em"];
+        return [
+          "code",
+          {
+            style:
+              "background-color: lightgray; padding: 0.125rem 0.25rem; border-radius: 2px;"
+          },
+          0
+        ];
       },
       parseDOM: [
         {
-          tag: "em"
+          tag: "code"
         }
       ]
     },
@@ -120,23 +109,6 @@ export const schema = new Schema({
               ).href
             };
           }
-        }
-      ]
-    },
-    code: {
-      toDOM() {
-        return [
-          "code",
-          {
-            style:
-              "background-color: lightgray; padding: 0.125rem 0.25rem; border-radius: 2px;"
-          },
-          0
-        ];
-      },
-      parseDOM: [
-        {
-          tag: "code"
         }
       ]
     }
