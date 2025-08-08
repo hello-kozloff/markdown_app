@@ -1,10 +1,12 @@
 "use client";
 
-import { DemoEditor } from "./components/test";
+import { MarkdownEditor } from "./components/test";
 import { content } from "./components/content";
 
 export default function DocumentPage() {
   return (
-    <DemoEditor content={content} />
+    <MarkdownEditor
+      markdown={content}
+    />
   );
 }
