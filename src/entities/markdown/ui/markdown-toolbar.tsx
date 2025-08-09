@@ -24,7 +24,7 @@ export function MarkdownToolbar() {
   return (
     <div className="fixed inset-x-0 top-0 border-b bg-background">
       <div className="flex justify-center">
-        <div className="py-3 flex">
+        <div className="p-3 flex">
           <MarkdownInlineBlock>
             <MarkdownButtonUndo />
             <MarkdownButtonRedo />
