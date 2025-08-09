@@ -10,6 +10,7 @@ import {
   UseMarkdownEditorOptions
 } from "../hooks/use-markdown-editor";
 import { proseMirrorViewPlugins } from "../model/plugins";
+import { MarkdownToolbar } from "@/entities/markdown/ui/markdown-toolbar";
 
 export type MarkdownEditorProps = Pick<
   UseMarkdownEditorOptions,
@@ -41,6 +42,7 @@ export function MarkdownEditor({
       plugins={proseMirrorViewPlugins}
       className="prose"
     >
+      <MarkdownToolbar />
       <ProseMirrorDoc />
     </ProseMirror>
   );
