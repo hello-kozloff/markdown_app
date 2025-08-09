@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -117,5 +116,69 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+.prose {
+  h4, h5, h6 {
+    @apply text-base;
+  }
+
+  h1 {
+    @apply text-2xl font-bold;
+
+    &:not(:first-child) {
+      @apply mt-18;
+    }
+  }
+
+  h2 {
+    @apply text-xl font-bold;
+
+    &:not(:first-child) {
+      @apply mt-12;
+    }
+  }
+
+  h3 {
+    @apply text-lg font-semibold;
+
+    &:not(:first-child) {
+      @apply mt-9;
+    }
+  }
+
+  h4 {
+    @apply text-base font-semibold;
+
+    &:not(:first-child) {
+      @apply mt-8;
+    }
+  }
+
+  p {
+    &:not(:first-child) {
+      @apply mt-5;
+    }
+  }
+
+  a {
+    @apply text-blue-400 underline underline-offset-4;
+  }
+
+  img {
+    @apply rounded-xl;
+  }
+
+  code {
+    @apply p-px border rounded bg-border;
+  }
+
+  blockquote {
+    @apply my-6 py-1.5 pl-4 border-l-4;
+  }
+
+  ol {
+    @apply my-6 pl-6;
   }
 }
