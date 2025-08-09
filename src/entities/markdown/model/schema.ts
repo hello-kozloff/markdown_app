@@ -46,6 +46,32 @@ export const schema = new Schema({
         ];
       }
     },
+    blockquote: {
+      content: "block+",
+      group: "block",
+      defining: true,
+      toDOM() {
+        return ["blockquote", 0];
+      },
+      parseDOM: [{ tag: "blockquote" }]
+    },
+    list: {
+      group: "block",
+      content: "list_item+",
+      toDOM() {
+        return [
+          "ol",
+          { class: "list-decimal" },
+          0
+        ];
+      }
+    },
+    list_item: {
+      content: "paragraph+",
+      toDOM() {
+        return ["li", 0];
+      }
+    },
     text: { group: "inline" }
   },
   marks: {
@@ -71,14 +97,7 @@ export const schema = new Schema({
     },
     code: {
       toDOM() {
-        return [
-          "code",
-          {
-            style:
-              "background-color: lightgray; padding: 0.125rem 0.25rem; border-radius: 2px;"
-          },
-          0
-        ];
+        return ["code"];
       },
       parseDOM: [
         {
