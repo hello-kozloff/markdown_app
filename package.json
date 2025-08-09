@@ -13,6 +13,7 @@
     "@codemirror/lang-javascript": "^6.2.4",
     "@handlewithcare/react-prosemirror": "^2.4.11",
     "@handlewithcare/remark-prosemirror": "^0.1.5",
+    "@radix-ui/react-menubar": "^1.1.15",
     "@radix-ui/react-slot": "^1.2.3",
     "@tailwindcss/typography": "^0.5.16",
     "@uiw/react-codemirror": "^4.24.2",
