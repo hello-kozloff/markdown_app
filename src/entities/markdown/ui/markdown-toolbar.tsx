@@ -34,6 +34,7 @@ export function MarkdownToolbar() {
             <MarkdownButtonList />
             <MarkdownButtonBlockquote />
             <MarkdownButtonCodeBlock />
+            <MarkdownButtonImage />
           </MarkdownInlineBlock>
           <MarkdownInlineBlock>
             <MarkdownButtonBold />
@@ -45,17 +46,14 @@ export function MarkdownToolbar() {
             <MarkdownButtonLink />
           </MarkdownInlineBlock>
           <MarkdownInlineBlock>
-            <MarkdownButtonSuperscript />
-            <MarkdownButtonSubscript />
-          </MarkdownInlineBlock>
-          <MarkdownInlineBlock>
             <MarkdownButtonAlignLeft />
             <MarkdownButtonAlignCenter />
             <MarkdownButtonAlignRight />
             <MarkdownButtonAlignJustify />
           </MarkdownInlineBlock>
           <MarkdownInlineBlock>
-            <MarkdownButtonImage />
+            <MarkdownButtonSuperscript />
+            <MarkdownButtonSubscript />
           </MarkdownInlineBlock>
         </div>
       </div>
