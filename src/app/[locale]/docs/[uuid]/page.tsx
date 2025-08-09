@@ -27,10 +27,8 @@ const content = `
 
 export default function DocumentPage() {
   return (
-    <div className="max-w-2xl mx-auto p-12">
-      <MarkdownEditor
-        initialMarkdown={content}
-      />
-    </div>
+    <MarkdownEditor
+      initialMarkdown={content}
+    />
   );
 }

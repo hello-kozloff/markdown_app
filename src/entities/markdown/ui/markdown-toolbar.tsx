@@ -22,40 +22,38 @@ import { MarkdownButtonImage } from "./markdown-button-image";
 
 export function MarkdownToolbar() {
   return (
-    <div className="fixed inset-x-0 top-0 border-b bg-background">
-      <div className="flex justify-center">
-        <div className="p-3 flex">
-          <MarkdownInlineBlock>
-            <MarkdownButtonUndo />
-            <MarkdownButtonRedo />
-          </MarkdownInlineBlock>
-          <MarkdownInlineBlock>
-            <MarkdownButtonHeading />
-            <MarkdownButtonList />
-            <MarkdownButtonBlockquote />
-            <MarkdownButtonCodeBlock />
-            <MarkdownButtonImage />
-          </MarkdownInlineBlock>
-          <MarkdownInlineBlock>
-            <MarkdownButtonBold />
-            <MarkdownButtonItalic />
-            <MarkdownButtonUnderline />
-            <MarkdownButtonStrike />
-            <MarkdownButtonCode />
-            <MarkdownButtonHighlight />
-            <MarkdownButtonLink />
-          </MarkdownInlineBlock>
-          <MarkdownInlineBlock>
-            <MarkdownButtonAlignLeft />
-            <MarkdownButtonAlignCenter />
-            <MarkdownButtonAlignRight />
-            <MarkdownButtonAlignJustify />
-          </MarkdownInlineBlock>
-          <MarkdownInlineBlock>
-            <MarkdownButtonSuperscript />
-            <MarkdownButtonSubscript />
-          </MarkdownInlineBlock>
-        </div>
+    <div className="flex justify-center">
+      <div className="p-3 flex">
+        <MarkdownInlineBlock>
+          <MarkdownButtonUndo />
+          <MarkdownButtonRedo />
+        </MarkdownInlineBlock>
+        <MarkdownInlineBlock>
+          <MarkdownButtonHeading />
+          <MarkdownButtonList />
+          <MarkdownButtonBlockquote />
+          <MarkdownButtonCodeBlock />
+          <MarkdownButtonImage />
+        </MarkdownInlineBlock>
+        <MarkdownInlineBlock>
+          <MarkdownButtonBold />
+          <MarkdownButtonItalic />
+          <MarkdownButtonUnderline />
+          <MarkdownButtonStrike />
+          <MarkdownButtonCode />
+          <MarkdownButtonHighlight />
+          <MarkdownButtonLink />
+        </MarkdownInlineBlock>
+        <MarkdownInlineBlock>
+          <MarkdownButtonAlignLeft />
+          <MarkdownButtonAlignCenter />
+          <MarkdownButtonAlignRight />
+          <MarkdownButtonAlignJustify />
+        </MarkdownInlineBlock>
+        <MarkdownInlineBlock>
+          <MarkdownButtonSuperscript />
+          <MarkdownButtonSubscript />
+        </MarkdownInlineBlock>
       </div>
     </div>
   );
