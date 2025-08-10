@@ -167,7 +167,7 @@
   }
 
   img {
-    @apply rounded-xl;
+    @apply rounded-lg shadow;
   }
 
   code {

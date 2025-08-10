@@ -6,7 +6,7 @@ export function MarkdownButton({
   return (
     <button
       type="button"
-      className="p-2 rounded-lg hover:bg-border cursor-pointer"
+      className="p-2.5 text-gray-400 hover:text-white hover:bg-white/5 cursor-pointer transition-all rounded-full"
     >
       {children}
     </button>

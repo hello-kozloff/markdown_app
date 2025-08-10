@@ -12,8 +12,6 @@ import { MarkdownButtonUnderline } from "./markdown-button-underline";
 import { MarkdownButtonCode } from "./markdown-button-code";
 import { MarkdownButtonHighlight } from "./markdown-button-highlight";
 import { MarkdownButtonLink } from "./markdown-button-link";
-import { MarkdownButtonSuperscript } from "./markdown-button-superscript";
-import { MarkdownButtonSubscript } from "./markdown-button-subscript";
 import { MarkdownButtonAlignLeft } from "./markdown-button-align-left";
 import { MarkdownButtonAlignCenter } from "./markdown-button-align-center";
 import { MarkdownButtonAlignRight } from "./markdown-button-align-right";
@@ -23,7 +21,7 @@ import { MarkdownButtonImage } from "./markdown-button-image";
 export function MarkdownToolbar() {
   return (
     <div className="flex justify-center">
-      <div className="p-3 flex">
+      <div className="p-2 flex">
         <MarkdownInlineBlock>
           <MarkdownButtonUndo />
           <MarkdownButtonRedo />
@@ -49,10 +47,6 @@ export function MarkdownToolbar() {
           <MarkdownButtonAlignCenter />
           <MarkdownButtonAlignRight />
           <MarkdownButtonAlignJustify />
-        </MarkdownInlineBlock>
-        <MarkdownInlineBlock>
-          <MarkdownButtonSuperscript />
-          <MarkdownButtonSubscript />
         </MarkdownInlineBlock>
       </div>
     </div>
