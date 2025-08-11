@@ -1,7 +1,4 @@
-import {
-  ElementType,
-  PropsWithChildren
-} from "react";
+import { ElementType, PropsWithChildren } from "react";
 import { cn } from "@/shared/lib/utils";
 
 export interface MarkdownButtonProps<
@@ -22,7 +19,7 @@ export function MarkdownButton<
   return (
     <Component
       className={cn(
-        "p-2.5 flex gap-0.5 items-center text-gray-400 hover:text-white hover:bg-white/5 cursor-pointer transition-all rounded-full",
+        "p-2.5 flex gap-0.5 items-center text-gray-400 hover:text-white hover:bg-white/5 cursor-pointer rounded-full",
         className
       )}
     >
