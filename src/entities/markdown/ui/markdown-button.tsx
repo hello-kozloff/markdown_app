@@ -1,14 +1,24 @@
-import { PropsWithChildren } from "react";
+import {
+  ElementType,
+  PropsWithChildren
+} from "react";
 
-export function MarkdownButton({
+export interface MarkdownButtonProps<
+  T extends ElementType
+> extends PropsWithChildren {
+  as?: T;
+}
+
+export function MarkdownButton<
+  T extends ElementType = "button"
+>({
+  as,
   children
-}: PropsWithChildren) {
+}: MarkdownButtonProps<T>) {
+  const Component = as || "button";
   return (
-    <button
-      type="button"
-      className="p-2.5 text-gray-400 hover:text-white hover:bg-white/5 cursor-pointer transition-all rounded-full"
-    >
+    <Component className="p-2.5 flex gap-0.5 items-center text-gray-400 hover:text-white hover:bg-white/5 active:bg-white/10 cursor-pointer transition-all rounded-full">
       {children}
-    </button>
+    </Component>
   );
 }
