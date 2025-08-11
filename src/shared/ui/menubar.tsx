@@ -2,7 +2,11 @@
 
 import * as React from "react";
 import * as MenubarPrimitive from "@radix-ui/react-menubar";
-import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
+import {
+  CheckIcon,
+  ChevronRightIcon,
+  CircleIcon
+} from "lucide-react";
 
 import { cn } from "@/shared/lib/utils";
 
@@ -81,7 +85,7 @@ function MenubarTrigger({
     <MenubarPrimitive.Trigger
       data-slot="menubar-trigger"
       className={cn(
-        "data-[state=open]:text-white data-[state=open]:bg-white/10 hover:bg-white/5 rounded-ful text-gray-400 cursor-pointer outline-hidden select-none rounded-full",
+        "data-[state=open]:text-white data-[state=open]:bg-white/10 hover:bg-white/5 hover:text-white rounded-ful text-gray-400 cursor-pointer select-none rounded-full",
         className
       )}
       {...props}
@@ -226,7 +230,7 @@ function MenubarSeparator({
     <MenubarPrimitive.Separator
       data-slot="menubar-separator"
       className={cn(
-        "bg-border -mx-1 my-1 h-px",
+        "bg-border -mx-1.5 my-1.5 h-px",
         className
       )}
       {...props}
@@ -278,7 +282,7 @@ function MenubarSubTrigger({
       data-slot="menubar-sub-trigger"
       data-inset={inset}
       className={cn(
-        "focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground flex cursor-pointer items-center rounded-sm px-2 py-1.5 text-sm outline-none select-none data-[inset]:pl-8",
+        "focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground flex cursor-pointer items-center rounded-full px-3 py-2 text-xs outline-0 select-none data-[inset]:pl-8",
         className
       )}
       {...props}
@@ -299,7 +303,7 @@ function MenubarSubContent({
     <MenubarPrimitive.SubContent
       data-slot="menubar-sub-content"
       className={cn(
-        "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] origin-(--radix-menubar-content-transform-origin) overflow-hidden rounded-md border p-1 shadow-lg",
+        "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] origin-(--radix-menubar-content-transform-origin) overflow-hidden rounded-md border px-1 py-1.5 shadow-lg",
         className
       )}
       {...props}
