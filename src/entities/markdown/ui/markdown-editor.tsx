@@ -1,8 +1,14 @@
 "use client";
 
 import React from "react";
-import { ProseMirror, ProseMirrorDoc } from "@handlewithcare/react-prosemirror";
-import { useMarkdownEditor, UseMarkdownEditorOptions } from "../hooks/use-markdown-editor";
+import {
+  ProseMirror,
+  ProseMirrorDoc
+} from "@handlewithcare/react-prosemirror";
+import {
+  useMarkdownEditor,
+  UseMarkdownEditorOptions
+} from "../hooks/use-markdown-editor";
 import { proseMirrorViewPlugins } from "../model/plugins";
 import { MarkdownToolbar } from "@/entities/markdown/ui/markdown-toolbar";
 import {
@@ -13,8 +19,36 @@ import {
   MenubarSeparator,
   MenubarTrigger
 } from "@/shared/ui/menubar";
-import { Input } from "@/shared/ui/input";
-import { Avatar, AvatarImage } from "@/shared/ui/avatar";
+import {
+  BoldIcon,
+  ClipboardIcon,
+  ClipboardPasteIcon,
+  CodeXmlIcon,
+  DeleteIcon,
+  FolderDownIcon,
+  FolderOpenIcon,
+  FolderPenIcon,
+  FolderPlusIcon,
+  FolderUpIcon,
+  FolderXIcon,
+  HeadingIcon,
+  ImageIcon,
+  ItalicIcon,
+  LibraryBigIcon,
+  LinkIcon,
+  ListIcon,
+  RedoIcon,
+  ScanSearchIcon,
+  ScissorsIcon,
+  SearchIcon,
+  SquareSquareIcon,
+  StrikethroughIcon,
+  Table2Icon,
+  TableRowsSplitIcon,
+  TextQuoteIcon,
+  UnderlineIcon,
+  UndoIcon
+} from "lucide-react";
 
 export type MarkdownEditorProps = Pick<
   UseMarkdownEditorOptions,
@@ -50,13 +84,9 @@ export function MarkdownEditor({
         <div className="py-2 px-2 grid gap-2 border-b">
           <div className="container mx-auto flex items-center justify-between">
             <div>
-              <div className="px-3">
-                <Input
-                  value="README.md"
-                  variant="transparent"
-                  className="text-xl"
-                />
-              </div>
+              <span className="px-3 text-xl font-medium">
+                README.md
+              </span>
               <Menubar>
                 <MenubarMenu>
                   <MenubarTrigger className="text-sm px-3 py-1.5">
@@ -64,29 +94,29 @@ export function MarkdownEditor({
                   </MenubarTrigger>
                   <MenubarContent>
                     <MenubarItem>
+                      <FolderPlusIcon />
                       Создать
                     </MenubarItem>
                     <MenubarItem>
+                      <FolderOpenIcon />
                       Открыть
-                    </MenubarItem>
-                    <MenubarItem>
-                      Создать копию
                     </MenubarItem>
                     <MenubarSeparator />
                     <MenubarItem>
+                      <FolderUpIcon />
                       Поделиться
                     </MenubarItem>
                     <MenubarItem>
+                      <FolderDownIcon />
                       Скачать
                     </MenubarItem>
                     <MenubarSeparator />
                     <MenubarItem>
+                      <FolderPenIcon />
                       Переименовать
                     </MenubarItem>
                     <MenubarItem>
-                      Переместить
-                    </MenubarItem>
-                    <MenubarItem>
+                      <FolderXIcon />
                       Удалить
                     </MenubarItem>
                   </MenubarContent>
@@ -97,51 +127,81 @@ export function MarkdownEditor({
                   </MenubarTrigger>
                   <MenubarContent>
                     <MenubarItem>
+                      <UndoIcon />
                       Отменить
                     </MenubarItem>
                     <MenubarItem>
+                      <RedoIcon />
                       Повторить
                     </MenubarItem>
                     <MenubarSeparator />
                     <MenubarItem
                       disabled
                     >
+                      <ScissorsIcon />
                       Вырезать
                     </MenubarItem>
                     <MenubarItem
                       disabled
                     >
+                      <ClipboardIcon />
                       Копировать
                     </MenubarItem>
                     <MenubarItem>
+                      <ClipboardPasteIcon />
                       Вставить
-                    </MenubarItem>
-                    <MenubarItem>
-                      Вставить без
-                      форматирования
                     </MenubarItem>
                     <MenubarSeparator />
                     <MenubarItem>
+                      <SquareSquareIcon />
                       Выбрать все
                     </MenubarItem>
                     <MenubarItem
                       disabled
                     >
+                      <DeleteIcon />
                       Удалить
                     </MenubarItem>
                     <MenubarSeparator />
                     <MenubarItem>
+                      <ScanSearchIcon />
                       Найти и заменить
                     </MenubarItem>
                   </MenubarContent>
                 </MenubarMenu>
                 <MenubarMenu>
                   <MenubarTrigger className="text-sm px-3 py-1.5">
-                    Вид
+                    Вставка
                   </MenubarTrigger>
                   <MenubarContent>
                     <MenubarItem>
-                      Создать
+                      <HeadingIcon />
+                      Заголовок
+                    </MenubarItem>
+                    <MenubarItem>
+                      <ListIcon />
+                      Список
+                    </MenubarItem>
+                    <MenubarItem>
+                      <TextQuoteIcon />
+                      Цитата
+                    </MenubarItem>
+                    <MenubarItem>
+                      <CodeXmlIcon />
+                      Код
+                    </MenubarItem>
+                    <MenubarItem>
+                      <ImageIcon />
+                      Изображение
+                    </MenubarItem>
+                    <MenubarItem>
+                      <Table2Icon />
+                      Таблица
+                    </MenubarItem>
+                    <MenubarItem>
+                      <TableRowsSplitIcon />
+                      Горизонтальная
+                      линия
                     </MenubarItem>
                   </MenubarContent>
                 </MenubarMenu>
@@ -151,7 +211,24 @@ export function MarkdownEditor({
                   </MenubarTrigger>
                   <MenubarContent>
                     <MenubarItem>
-                      Создать
+                      <BoldIcon />
+                      Жирный
+                    </MenubarItem>
+                    <MenubarItem>
+                      <ItalicIcon />
+                      Курсив
+                    </MenubarItem>
+                    <MenubarItem>
+                      <UnderlineIcon />
+                      Подчеркнутый
+                    </MenubarItem>
+                    <MenubarItem>
+                      <StrikethroughIcon />
+                      Зачеркнутый
+                    </MenubarItem>
+                    <MenubarItem>
+                      <LinkIcon />
+                      Ссылка
                     </MenubarItem>
                   </MenubarContent>
                 </MenubarMenu>
@@ -161,19 +238,17 @@ export function MarkdownEditor({
                   </MenubarTrigger>
                   <MenubarContent>
                     <MenubarItem>
-                      Создать
+                      <SearchIcon />
+                      Поиск
+                    </MenubarItem>
+                    <MenubarSeparator />
+                    <MenubarItem>
+                      <LibraryBigIcon />
+                      Обучение
                     </MenubarItem>
                   </MenubarContent>
                 </MenubarMenu>
               </Menubar>
-            </div>
-            <div>
-              <Avatar className="w-10 h-10">
-                <AvatarImage
-                  src="/example-avatar.jpg"
-                  className="object-cover"
-                />
-              </Avatar>
             </div>
           </div>
         </div>
