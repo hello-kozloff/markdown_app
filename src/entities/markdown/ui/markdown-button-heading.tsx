@@ -17,9 +17,12 @@ import {
   MenubarTrigger
 } from "@/shared/ui/menubar";
 import { useTranslations } from "next-intl";
+import { useEditorState } from "@handlewithcare/react-prosemirror";
+import { isNodeActive } from "@/shared/lib/utils";
 
 export function MarkdownButtonHeading() {
   const t = useTranslations("tools");
+  const state = useEditorState();
 
   return (
     <Menubar>
@@ -28,6 +31,10 @@ export function MarkdownButtonHeading() {
           <MarkdownButton
             as="span"
             className="hover:bg-transparent text-inherit"
+            isActive={isNodeActive(
+              "heading",
+              state
+            )}
           >
             <Heading size={16} />
             <ChevronDown size={10} />
