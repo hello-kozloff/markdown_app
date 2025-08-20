@@ -18,9 +18,9 @@ import {
 import { useTranslations } from "next-intl";
 import { useEditorState } from "@handlewithcare/react-prosemirror";
 import { isNodeActive } from "@/shared/lib/utils";
-import { MarkdownTool } from "./markdown-tool";
+import { MenuButton } from "../../../shared/ui/menu-button";
 
-export function MarkdownToolHeading() {
+export function MarkdownHeading() {
   const t = useTranslations("tools");
   const state = useEditorState();
 
@@ -28,7 +28,7 @@ export function MarkdownToolHeading() {
     <Menubar>
       <MenubarMenu>
         <MenubarTrigger>
-          <MarkdownTool
+          <MenuButton
             as="span"
             className="hover:bg-transparent text-inherit"
             isActive={isNodeActive(
@@ -40,7 +40,7 @@ export function MarkdownToolHeading() {
             <ChevronDownIcon
               size={10}
             />
-          </MarkdownTool>
+          </MenuButton>
         </MenubarTrigger>
         <MenubarContent>
           <MenubarItem>

@@ -12,16 +12,16 @@ import {
   MenubarTrigger
 } from "@/shared/ui/menubar";
 import { useTranslations } from "next-intl";
-import { MarkdownTool } from "./markdown-tool";
+import { MenuButton } from "../../../shared/ui/menu-button";
 
-export function MarkdownToolList() {
+export function MarkdownList() {
   const t = useTranslations("tools");
 
   return (
     <Menubar>
       <MenubarMenu>
         <MenubarTrigger>
-          <MarkdownTool
+          <MenuButton
             as="span"
             className="hover:bg-transparent text-inherit"
           >
@@ -29,7 +29,7 @@ export function MarkdownToolList() {
             <ChevronDownIcon
               size={10}
             />
-          </MarkdownTool>
+          </MenuButton>
         </MenubarTrigger>
         <MenubarContent>
           <MenubarItem>

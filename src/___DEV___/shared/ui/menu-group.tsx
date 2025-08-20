@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react";
 
-export function MarkdownGroup({
+export function MenuGroup({
   children
 }: PropsWithChildren) {
   return (

@@ -4,7 +4,7 @@ import {
 } from "react";
 import { cn } from "@/shared/lib/utils";
 
-export interface MarkdownToolProps<
+export interface MenuButtonProps<
   T extends ElementType
 > extends ButtonHTMLAttributes<HTMLButtonElement> {
   as?: T;
@@ -12,7 +12,7 @@ export interface MarkdownToolProps<
   className?: string;
 }
 
-export function MarkdownTool<
+export function MenuButton<
   T extends ElementType = "button"
 >({
   as,
@@ -20,7 +20,7 @@ export function MarkdownTool<
   isActive,
   className,
   ...props
-}: MarkdownToolProps<T>) {
+}: MenuButtonProps<T>) {
   const Component = as || "button";
   return (
     <Component

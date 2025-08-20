@@ -5,9 +5,9 @@ import {
 import { BoldIcon } from "lucide-react";
 import { toggleMark } from "prosemirror-commands";
 import { isMarkActive } from "@/shared/lib/utils";
-import { MarkdownTool } from "./markdown-tool";
+import { MenuButton } from "../../../shared/ui/menu-button";
 
-export function MarkdownToolBold() {
+export function MarkdownBold() {
   const state = useEditorState();
 
   const toggleBold =
@@ -28,7 +28,7 @@ export function MarkdownToolBold() {
     });
 
   return (
-    <MarkdownTool
+    <MenuButton
       onClick={toggleBold}
       isActive={isMarkActive(
         state.schema.marks["strong"],
@@ -36,6 +36,6 @@ export function MarkdownToolBold() {
       )}
     >
       <BoldIcon size={16} />
-    </MarkdownTool>
+    </MenuButton>
   );
 }
