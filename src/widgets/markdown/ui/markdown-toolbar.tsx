@@ -18,12 +18,12 @@ import {
   MarkdownUnderline,
   MarkdownUndo
 } from "@/features/markdown";
-import { ToolbarBlock } from "@/shared/ui/toolbar";
+import { Toolbar, ToolbarBlock } from "@/shared/ui/toolbar";
 
 export function MarkdownToolbar() {
   return (
     <div className="flex justify-center">
-      <div className="p-2 flex">
+      <Toolbar>
         <ToolbarBlock>
           <MarkdownUndo />
           <MarkdownRedo />
@@ -50,7 +50,7 @@ export function MarkdownToolbar() {
           <MarkdownAlignRight />
           <MarkdownAlignJustify />
         </ToolbarBlock>
-      </div>
+      </Toolbar>
     </div>
   );
 }
