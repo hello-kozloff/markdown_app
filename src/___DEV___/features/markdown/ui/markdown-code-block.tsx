@@ -1,12 +1,12 @@
 import { MessageSquareCodeIcon } from "lucide-react";
-import { MenuButton } from "../../../shared/ui/menu-button";
+import { ToolbarItem } from "@/___DEV___/shared/ui/toolbar";
 
 export function MarkdownCodeBlock() {
   return (
-    <MenuButton>
+    <ToolbarItem>
       <MessageSquareCodeIcon
         size={16}
       />
-    </MenuButton>
+    </ToolbarItem>
   );
 }

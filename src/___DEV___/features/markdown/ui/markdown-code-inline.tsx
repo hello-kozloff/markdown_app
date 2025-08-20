@@ -1,10 +1,10 @@
 import { CodeXmlIcon } from "lucide-react";
-import { MenuButton } from "../../../shared/ui/menu-button";
+import { ToolbarItem } from "@/___DEV___/shared/ui/toolbar";
 
 export function MarkdownCodeInline() {
   return (
-    <MenuButton>
+    <ToolbarItem>
       <CodeXmlIcon size={16} />
-    </MenuButton>
+    </ToolbarItem>
   );
 }

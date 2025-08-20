@@ -5,7 +5,7 @@ import {
 import { ItalicIcon } from "lucide-react";
 import { toggleMark } from "prosemirror-commands";
 import { isMarkActive } from "@/shared/lib/utils";
-import { MenuButton } from "../../../shared/ui/menu-button";
+import { ToolbarItem } from "@/___DEV___/shared/ui/toolbar";
 
 export function MarkdownItalic() {
   const state = useEditorState();
@@ -27,7 +27,7 @@ export function MarkdownItalic() {
     });
 
   return (
-    <MenuButton
+    <ToolbarItem
       onClick={toggleItalic}
       isActive={isMarkActive(
         state.schema.marks["em"],
@@ -35,6 +35,6 @@ export function MarkdownItalic() {
       )}
     >
       <ItalicIcon size={16} />
-    </MenuButton>
+    </ToolbarItem>
   );
 }

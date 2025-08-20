@@ -1,10 +1,10 @@
 import { Redo2Icon } from "lucide-react";
-import { MenuButton } from "../../../shared/ui/menu-button";
+import { ToolbarItem } from "@/___DEV___/shared/ui/toolbar";
 
 export function MarkdownRedo() {
   return (
-    <MenuButton>
+    <ToolbarItem>
       <Redo2Icon size={16} />
-    </MenuButton>
+    </ToolbarItem>
   );
 }

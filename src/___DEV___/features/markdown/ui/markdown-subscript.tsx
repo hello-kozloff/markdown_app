@@ -1,10 +1,10 @@
 import { SubscriptIcon } from "lucide-react";
-import { MenuButton } from "../../../shared/ui/menu-button";
+import { ToolbarItem } from "@/___DEV___/shared/ui/toolbar";
 
 export function MarkdownSubscript() {
   return (
-    <MenuButton>
+    <ToolbarItem>
       <SubscriptIcon size={16} />
-    </MenuButton>
+    </ToolbarItem>
   );
 }

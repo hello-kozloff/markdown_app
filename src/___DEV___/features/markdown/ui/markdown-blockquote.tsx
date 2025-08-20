@@ -1,10 +1,10 @@
 import { TextQuoteIcon } from "lucide-react";
-import { MenuButton } from "../../../shared/ui/menu-button";
+import { ToolbarItem } from "@/___DEV___/shared/ui/toolbar";
 
 export function MarkdownBlockquote() {
   return (
-    <MenuButton>
+    <ToolbarItem>
       <TextQuoteIcon size={16} />
-    </MenuButton>
+    </ToolbarItem>
   );
 }

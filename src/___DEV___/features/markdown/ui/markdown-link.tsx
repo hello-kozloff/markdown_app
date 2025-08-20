@@ -1,10 +1,10 @@
 import { LinkIcon } from "lucide-react";
-import { MenuButton } from "../../../shared/ui/menu-button";
+import { ToolbarItem } from "@/___DEV___/shared/ui/toolbar";
 
 export function MarkdownLink() {
   return (
-    <MenuButton>
+    <ToolbarItem>
       <LinkIcon size={16} />
-    </MenuButton>
+    </ToolbarItem>
   );
 }

@@ -1,10 +1,10 @@
 import { Undo2Icon } from "lucide-react";
-import { MenuButton } from "../../../shared/ui/menu-button";
+import { ToolbarItem } from "@/___DEV___/shared/ui/toolbar";
 
 export function MarkdownUndo() {
   return (
-    <MenuButton>
+    <ToolbarItem>
       <Undo2Icon size={16} />
-    </MenuButton>
+    </ToolbarItem>
   );
 }

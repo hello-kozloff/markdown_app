@@ -1,4 +1,4 @@
-import { MenuGroup } from "../../../shared/ui/menu-group";
+import { ToolbarBlock } from "@/___DEV___/shared/ui/toolbar";
 import {
   MarkdownAlignCenter,
   MarkdownAlignJustify,
@@ -24,18 +24,18 @@ export function MarkdownToolbar() {
   return (
     <div className="flex justify-center">
       <div className="p-2 flex">
-        <MenuGroup>
+        <ToolbarBlock>
           <MarkdownUndo />
           <MarkdownRedo />
-        </MenuGroup>
-        <MenuGroup>
+        </ToolbarBlock>
+        <ToolbarBlock>
           <MarkdownHeading />
           <MarkdownList />
           <MarkdownBlockquote />
           <MarkdownCodeBlock />
           <MarkdownImage />
-        </MenuGroup>
-        <MenuGroup>
+        </ToolbarBlock>
+        <ToolbarBlock>
           <MarkdownBold />
           <MarkdownItalic />
           <MarkdownUnderline />
@@ -43,13 +43,13 @@ export function MarkdownToolbar() {
           <MarkdownCodeInline />
           <MarkdownHighlight />
           <MarkdownLink />
-        </MenuGroup>
-        <MenuGroup>
+        </ToolbarBlock>
+        <ToolbarBlock>
           <MarkdownAlignLeft />
           <MarkdownAlignCenter />
           <MarkdownAlignRight />
           <MarkdownAlignJustify />
-        </MenuGroup>
+        </ToolbarBlock>
       </div>
     </div>
   );

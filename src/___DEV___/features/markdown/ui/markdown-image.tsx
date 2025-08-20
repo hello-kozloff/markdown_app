@@ -1,10 +1,10 @@
 import { ImageIcon } from "lucide-react";
-import { MenuButton } from "../../../shared/ui/menu-button";
+import { ToolbarItem } from "@/___DEV___/shared/ui/toolbar";
 
 export function MarkdownImage() {
   return (
-    <MenuButton>
+    <ToolbarItem>
       <ImageIcon size={16} />
-    </MenuButton>
+    </ToolbarItem>
   );
 }

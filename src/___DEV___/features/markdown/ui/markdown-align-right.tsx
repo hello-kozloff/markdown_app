@@ -1,10 +1,10 @@
 import { AlignRightIcon } from "lucide-react";
-import { MenuButton } from "../../../shared/ui/menu-button";
+import { ToolbarItem } from "@/___DEV___/shared/ui/toolbar";
 
 export function MarkdownAlignRight() {
   return (
-    <MenuButton>
+    <ToolbarItem>
       <AlignRightIcon size={16} />
-    </MenuButton>
+    </ToolbarItem>
   );
 }
