@@ -16,13 +16,10 @@ import {
   MenubarTrigger
 } from "@/shared/ui/menubar";
 import { useTranslations } from "next-intl";
-import { useEditorState } from "@handlewithcare/react-prosemirror";
-import { isNodeActive } from "@/shared/lib/utils";
 import { ToolbarItem } from "@/___DEV___/shared/ui/toolbar";
 
 export function MarkdownHeading() {
   const t = useTranslations("tools");
-  const state = useEditorState();
 
   return (
     <Menubar>
@@ -31,10 +28,6 @@ export function MarkdownHeading() {
           <ToolbarItem
             as="span"
             className="hover:bg-transparent text-inherit"
-            isActive={isNodeActive(
-              "heading",
-              state
-            )}
           >
             <HeadingIcon size={16} />
             <ChevronDownIcon

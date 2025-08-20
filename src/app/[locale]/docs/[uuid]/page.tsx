@@ -1,4 +1,5 @@
-import { MarkdownEditor } from "@/entities/markdown";
+import { MarkdownContent } from "@/___DEV___/entities/markdown";
+import { MarkdownToolbar } from "@/___DEV___/widgets/markdown";
 
 const content = `
   # Getting started
@@ -29,8 +30,11 @@ const content = `
 
 export default function DocumentPage() {
   return (
-    <MarkdownEditor
-      initialMarkdown={content}
-    />
+    <div>
+      <MarkdownToolbar />
+      <MarkdownContent
+        initialMarkdown={content}
+      />
+    </div>
   );
 }
