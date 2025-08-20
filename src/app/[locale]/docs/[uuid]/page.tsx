@@ -1,5 +1,5 @@
-import { MarkdownContent } from "@/___DEV___/entities/markdown";
-import { MarkdownToolbar } from "@/___DEV___/widgets/markdown";
+import { MarkdownContent } from "@/entities/markdown";
+import { MarkdownToolbar } from "@/widgets/markdown";
 
 const content = `
   # Getting started

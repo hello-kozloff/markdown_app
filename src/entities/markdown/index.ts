@@ -1,1 +1,1 @@
-export * from "./ui/markdown-editor";
+export * from "./ui/markdown-content";
