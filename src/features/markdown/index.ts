@@ -1,5 +1,6 @@
 export * from "./hooks/use-markdown-bold";
 export * from "./hooks/use-markdown-italic";
+export * from "./hooks/use-markdown-underline";
 
 export * from "./ui/markdown-undo";
 export * from "./ui/markdown-redo";

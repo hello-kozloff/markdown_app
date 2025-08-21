@@ -95,6 +95,12 @@ export const schema = new Schema({
         }
       ]
     },
+    underline: {
+      toDOM() {
+        return ["u", 0];
+      },
+      parseDOM: [{ tag: "u" }]
+    },
     code: {
       toDOM() {
         return ["code"];
