@@ -34,24 +34,19 @@ export function MarkdownHeading() {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         {tools.heading.children.map(
-          (heading, index) => {
-            const Icon = heading.icon;
-            const level = index + 1;
-
-            return (
-              <DropdownMenuItem
-                key={heading.name}
-                onClick={() =>
-                  markdownNode.setNode({
-                    level
-                  })
-                }
-              >
-                <Icon size={16} />
-                {t(heading.name)}
-              </DropdownMenuItem>
-            );
-          }
+          (heading) => (
+            <DropdownMenuItem
+              key={heading.name}
+              onClick={() =>
+                markdownNode.set(
+                  heading.attrs
+                )
+              }
+            >
+              <heading.icon size={16} />
+              {t(heading.name)}
+            </DropdownMenuItem>
+          )
         )}
       </DropdownMenuContent>
     </DropdownMenu>
