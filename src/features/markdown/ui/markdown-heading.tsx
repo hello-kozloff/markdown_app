@@ -38,7 +38,7 @@ export function MarkdownHeading() {
             <DropdownMenuItem
               key={heading.name}
               onClick={() =>
-                markdownNode.set(
+                markdownNode.toggle(
                   heading.attrs
                 )
               }

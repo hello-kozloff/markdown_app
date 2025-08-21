@@ -23,19 +23,10 @@ export const useMarkdownMark = ({
   }, [mark, state]);
 
   const toggle = useEditorEventCallback(
-    (view) => {
-      const toggleBoldMark = toggleMark(
+    (view) =>
+      toggleMark(
         view.state.schema.marks[mark]
-      );
-
-      toggleBoldMark(
-        view.state,
-        view.dispatch,
-        view
-      );
-
-      view.focus();
-    }
+      )(view.state, view.dispatch, view)
   );
 
   return {
