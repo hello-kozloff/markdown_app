@@ -1,6 +1,6 @@
 import { UnderlineIcon } from "lucide-react";
+import { useMarkdownMark } from "@/entities/markdown";
 import { ToolbarItem } from "@/shared/ui/toolbar";
-import { useMarkdownMark } from "@/features/markdown";
 
 export function MarkdownUnderline() {
   const markdownMark = useMarkdownMark({

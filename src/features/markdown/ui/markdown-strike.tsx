@@ -1,5 +1,5 @@
 import { StrikethroughIcon } from "lucide-react";
-import { useMarkdownMark } from "@/features/markdown";
+import { useMarkdownMark } from "@/entities/markdown";
 import { ToolbarItem } from "@/shared/ui/toolbar";
 
 export function MarkdownStrike() {

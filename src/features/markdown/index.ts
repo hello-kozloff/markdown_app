@@ -1,5 +1,3 @@
-export * from "./hooks/use-markdown-mark";
-
 export * from "./ui/markdown-undo";
 export * from "./ui/markdown-redo";
 export * from "./ui/markdown-heading";

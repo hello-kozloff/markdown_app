@@ -1,6 +1,6 @@
 import { HighlighterIcon } from "lucide-react";
 import { ToolbarItem } from "@/shared/ui/toolbar";
-import { useMarkdownMark } from "@/features/markdown";
+import { useMarkdownMark } from "@/entities/markdown";
 
 export function MarkdownHighlight() {
   const markdownMark = useMarkdownMark({

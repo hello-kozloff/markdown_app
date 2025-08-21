@@ -1,6 +1,6 @@
 import { CodeXmlIcon } from "lucide-react";
 import { ToolbarItem } from "@/shared/ui/toolbar";
-import { useMarkdownMark } from "@/features/markdown";
+import { useMarkdownMark } from "@/entities/markdown";
 
 export function MarkdownCodeInline() {
   const markdownMark = useMarkdownMark({

@@ -1,12 +1,7 @@
-import {
-  useCallback,
-  useEffect,
-  useState
-} from "react";
-import {
-  EditorState,
-  Transaction
-} from "prosemirror-state";
+"use client";
+
+import { useCallback, useEffect, useState } from "react";
+import { EditorState, Transaction } from "prosemirror-state";
 import { proseMirrorStatePlugins } from "../model/plugins";
 import { parseMarkdownToProseMirrorDoc } from "../model/parser";
 import { schema } from "../model/schema";
