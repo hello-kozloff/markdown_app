@@ -34,7 +34,10 @@ export function isMarkActive(
 export function isNodeActive(
   state: EditorState,
   name: string,
-  attrs: Record<string, string> = {}
+  attrs: Record<
+    string,
+    string | number
+  > = {}
 ) {
   const { from, to } = state.selection;
 

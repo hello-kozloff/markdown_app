@@ -12,7 +12,12 @@ export function useMarkdownNode({
   const state = useEditorState();
 
   const isActive = useCallback(
-    (attrs: Record<string, string>) => {
+    (
+      attrs?: Record<
+        string,
+        string | number
+      >
+    ) => {
       return isNodeActive(
         state,
         node,
