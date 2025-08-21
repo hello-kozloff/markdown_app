@@ -1,6 +1,7 @@
 import { useCallback } from "react";
-import { useEditorState } from "@handlewithcare/react-prosemirror";
+import { useEditorEventCallback, useEditorState } from "@handlewithcare/react-prosemirror";
 import { isNodeActive } from "@/shared/lib/utils";
+import { setBlockType } from "prosemirror-commands";
 
 export interface UseMarkdownNodeOptions {
   node: string;
@@ -17,15 +18,25 @@ export function useMarkdownNode({
         string,
         string | number
       >
-    ) => {
-      return isNodeActive(
-        state,
-        node,
-        attrs
-      );
-    },
+    ) =>
+      isNodeActive(state, node, attrs),
     [node, state]
   );
 
-  return { isActive };
+  const setNode =
+    useEditorEventCallback(
+      (
+        view,
+        attrs?: Record<
+          string,
+          string | number
+        >
+      ) =>
+        setBlockType(
+          view.state.schema.nodes[node],
+          attrs
+        )(view.state, view.dispatch)
+    );
+
+  return { isActive, setNode };
 }
