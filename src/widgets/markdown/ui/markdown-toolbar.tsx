@@ -27,7 +27,7 @@ import {
 
 export function MarkdownToolbar() {
   return (
-    <Toolbar>
+    <Toolbar sticky>
       <ToolbarGroup>
         <MarkdownUndo />
         <MarkdownRedo />
