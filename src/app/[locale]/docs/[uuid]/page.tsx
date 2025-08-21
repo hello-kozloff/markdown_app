@@ -1,7 +1,11 @@
-import { MarkdownContent } from "@/entities/markdown";
+import {
+  MarkdownContent,
+  MarkdownContext
+} from "@/entities/markdown";
 import { MarkdownToolbar } from "@/widgets/markdown";
 
 const content = `
+ 
   # Getting started
   
   ~~Этот текст будет зачёркнут~~
@@ -26,15 +30,16 @@ const content = `
   ## Make it your own
   
   Switch between light and dark modes, and tailor the editor's appearance with customizable CSS to match your style.
+  
 `;
 
 export default function DocumentPage() {
   return (
-    <div>
+    <MarkdownContext
+      initialMarkdown={content}
+    >
       <MarkdownToolbar />
-      <MarkdownContent
-        initialMarkdown={content}
-      />
-    </div>
+      <MarkdownContent />
+    </MarkdownContext>
   );
 }
