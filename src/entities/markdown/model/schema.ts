@@ -101,6 +101,12 @@ export const schema = new Schema({
       },
       parseDOM: [{ tag: "u" }]
     },
+    strike: {
+      toDOM() {
+        return ["s", 0];
+      },
+      parseDOM: [{ tag: "s" }]
+    },
     code: {
       toDOM() {
         return ["code"];
