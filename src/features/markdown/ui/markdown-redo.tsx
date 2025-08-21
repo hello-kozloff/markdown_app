@@ -3,7 +3,7 @@ import { ToolbarItem } from "@/shared/ui/toolbar";
 
 export function MarkdownRedo() {
   return (
-    <ToolbarItem>
+    <ToolbarItem disabled>
       <Redo2Icon size={16} />
     </ToolbarItem>
   );

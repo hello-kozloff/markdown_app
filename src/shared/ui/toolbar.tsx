@@ -9,7 +9,7 @@ import { PropsWithClassName } from "@/shared/types/utils";
 export type ToolbarProps =
   PropsWithClassName<PropsWithChildren>;
 
-export type ToolbarBlockProps =
+export type ToolbarGroupProps =
   PropsWithClassName<PropsWithChildren>;
 
 export type ToolbarItemProps<
@@ -28,21 +28,23 @@ export function Toolbar({
   children
 }: ToolbarProps) {
   return (
-    <div
-      className={cn(
-        "p-2 flex",
-        className
-      )}
-    >
-      {children}
+    <div className="flex border-b">
+      <div
+        className={cn(
+          "mx-auto p-2 flex",
+          className
+        )}
+      >
+        {children}
+      </div>
     </div>
   );
 }
 
-export function ToolbarBlock({
+export function ToolbarGroup({
   className,
   children
-}: ToolbarBlockProps) {
+}: ToolbarGroupProps) {
   return (
     <div
       className={cn(
@@ -70,10 +72,15 @@ export function ToolbarItem<
       {...props}
       className={cn(
         className,
-        "p-2.5 flex gap-0.5 items-center text-gray-400 hover:text-white hover:bg-white/5 cursor-pointer rounded-full",
+        "p-2.5",
+        "flex gap-0.5 items-center",
+        "text-gray-400 hover:not-disabled:text-white hover:not-disabled:bg-white/5",
+        "not-disabled:cursor-pointer rounded-full outline-0",
         {
           "text-white bg-white/15 hover:bg-white/15":
-            isActive
+            isActive,
+          "text-gray-400/40":
+            props.disabled
         }
       )}
     >
