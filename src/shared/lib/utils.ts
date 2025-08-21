@@ -32,8 +32,9 @@ export function isMarkActive(
 }
 
 export function isNodeActive(
+  state: EditorState,
   name: string,
-  state: EditorState
+  attrs: Record<string, string> = {}
 ) {
   const { from, to } = state.selection;
 
@@ -44,8 +45,17 @@ export function isNodeActive(
     to,
     (node) => {
       if (node.type.name === name) {
-        found = true;
-        return false;
+        const hasAttrs = Object.entries(
+          attrs
+        ).every(
+          ([key, value]) =>
+            node.attrs[key] === value
+        );
+
+        if (hasAttrs) {
+          found = true;
+          return false;
+        }
       }
       return !found;
     }
