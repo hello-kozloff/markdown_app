@@ -1,8 +1,4 @@
-import {
-  ButtonHTMLAttributes,
-  ElementType,
-  PropsWithChildren
-} from "react";
+import { ButtonHTMLAttributes, ElementType, PropsWithChildren } from "react";
 import { cn } from "@/shared/lib/utils";
 import { PropsWithClassName } from "@/shared/types/utils";
 
@@ -74,10 +70,11 @@ export function ToolbarItem<
         className,
         "p-2.5",
         "flex gap-0.5 items-center",
-        "text-gray-400 hover:not-disabled:text-white hover:not-disabled:bg-white/5",
-        "not-disabled:cursor-pointer rounded-full outline-0",
+        "not-disabled:cursor-pointer transition ease-in-out rounded-full outline-0",
         {
-          "text-white bg-white/15 hover:bg-white/15":
+          "text-gray-400 hover:not-disabled:text-white hover:not-disabled:bg-white/5":
+            !isActive,
+          "text-blue-500 bg-blue-500/10 hover:bg-blue-500/15":
             isActive,
           "text-gray-400/40":
             props.disabled
