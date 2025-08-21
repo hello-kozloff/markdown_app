@@ -1,22 +1,8 @@
-import {
-  ChevronDownIcon,
-  Heading1Icon,
-  Heading2Icon,
-  Heading3Icon,
-  Heading4Icon,
-  Heading5Icon,
-  Heading6Icon,
-  HeadingIcon
-} from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger
-} from "@/shared/ui/dropdown-menu";
-import { ToolbarItem } from "@/shared/ui/toolbar";
 import { useTranslations } from "next-intl";
-import { useMarkdownNode } from "@/entities/markdown";
+import { ChevronDownIcon, HeadingIcon } from "lucide-react";
+import { tools, useMarkdownNode } from "@/entities/markdown";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/shared/ui/dropdown-menu";
+import { ToolbarItem } from "@/shared/ui/toolbar";
 
 export function MarkdownHeading() {
   const t = useTranslations("tools");
@@ -36,54 +22,19 @@ export function MarkdownHeading() {
         </ToolbarItem>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuItem
-          disabled={markdownNode.isActive(
-            { level: 1 }
-          )}
-        >
-          <Heading1Icon />
-          {t("heading-1")}
-        </DropdownMenuItem>
-        <DropdownMenuItem
-          disabled={markdownNode.isActive(
-            { level: 2 }
-          )}
-        >
-          <Heading2Icon />
-          {t("heading-2")}
-        </DropdownMenuItem>
-        <DropdownMenuItem
-          disabled={markdownNode.isActive(
-            { level: 3 }
-          )}
-        >
-          <Heading3Icon />
-          {t("heading-3")}
-        </DropdownMenuItem>
-        <DropdownMenuItem
-          disabled={markdownNode.isActive(
-            { level: 4 }
-          )}
-        >
-          <Heading4Icon />
-          {t("heading-4")}
-        </DropdownMenuItem>
-        <DropdownMenuItem
-          disabled={markdownNode.isActive(
-            { level: 5 }
-          )}
-        >
-          <Heading5Icon />
-          {t("heading-5")}
-        </DropdownMenuItem>
-        <DropdownMenuItem
-          disabled={markdownNode.isActive(
-            { level: 6 }
-          )}
-        >
-          <Heading6Icon />
-          {t("heading-6")}
-        </DropdownMenuItem>
+        {tools.headings.map(
+          (heading, index) => (
+            <DropdownMenuItem
+              key={heading.name}
+              disabled={markdownNode.isActive(
+                { level: index + 1 }
+              )}
+            >
+              <heading.icon size={16} />
+              {t(heading.name)}
+            </DropdownMenuItem>
+          )
+        )}
       </DropdownMenuContent>
     </DropdownMenu>
   );
