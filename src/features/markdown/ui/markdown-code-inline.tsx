@@ -1,17 +1,16 @@
 import { CodeXmlIcon } from "lucide-react";
 import { ToolbarItem } from "@/shared/ui/toolbar";
-import { useMarkdownCodeInline } from "@/features/markdown";
+import { useMarkdownMark } from "@/features/markdown";
 
 export function MarkdownCodeInline() {
-  const {
-    isCodeInline,
-    toggleCodeInline
-  } = useMarkdownCodeInline();
+  const markdownMark = useMarkdownMark({
+    mark: "code"
+  });
 
   return (
     <ToolbarItem
-      isActive={isCodeInline}
-      onClick={toggleCodeInline}
+      isActive={markdownMark.isActive}
+      onClick={markdownMark.toggle}
     >
       <CodeXmlIcon size={16} />
     </ToolbarItem>

@@ -1,15 +1,16 @@
 import { ItalicIcon } from "lucide-react";
 import { ToolbarItem } from "@/shared/ui/toolbar";
-import { useMarkdownItalic } from "@/features/markdown";
+import { useMarkdownMark } from "@/features/markdown";
 
 export function MarkdownItalic() {
-  const { isItalic, toggleItalic } =
-    useMarkdownItalic();
+  const markdownMark = useMarkdownMark({
+    mark: "em"
+  });
 
   return (
     <ToolbarItem
-      isActive={isItalic}
-      onClick={toggleItalic}
+      isActive={markdownMark.isActive}
+      onClick={markdownMark.toggle}
     >
       <ItalicIcon size={16} />
     </ToolbarItem>

@@ -1,15 +1,16 @@
 import { StrikethroughIcon } from "lucide-react";
+import { useMarkdownMark } from "@/features/markdown";
 import { ToolbarItem } from "@/shared/ui/toolbar";
-import { useMarkdownStrike } from "@/features/markdown";
 
 export function MarkdownStrike() {
-  const { isStrike, toggleStrike } =
-    useMarkdownStrike();
+  const markdownMark = useMarkdownMark({
+    mark: "strike"
+  });
 
   return (
     <ToolbarItem
-      isActive={isStrike}
-      onClick={toggleStrike}
+      isActive={markdownMark.isActive}
+      onClick={markdownMark.toggle}
     >
       <StrikethroughIcon size={16} />
     </ToolbarItem>

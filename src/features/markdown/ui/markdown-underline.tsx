@@ -1,17 +1,16 @@
 import { UnderlineIcon } from "lucide-react";
 import { ToolbarItem } from "@/shared/ui/toolbar";
-import { useMarkdownUnderline } from "@/features/markdown";
+import { useMarkdownMark } from "@/features/markdown";
 
 export function MarkdownUnderline() {
-  const {
-    isUnderline,
-    toggleUnderline
-  } = useMarkdownUnderline();
+  const markdownMark = useMarkdownMark({
+    mark: "underline"
+  });
 
   return (
     <ToolbarItem
-      isActive={isUnderline}
-      onClick={toggleUnderline}
+      isActive={markdownMark.isActive}
+      onClick={markdownMark.toggle}
     >
       <UnderlineIcon size={16} />
     </ToolbarItem>
