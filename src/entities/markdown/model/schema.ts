@@ -117,6 +117,22 @@ export const schema = new Schema({
         }
       ]
     },
+    highlight: {
+      toDOM() {
+        return [
+          "span",
+          {
+            class: "markdown-highlight"
+          },
+          0
+        ];
+      },
+      parseDOM: [
+        {
+          tag: "span.markdown-highlight"
+        }
+      ]
+    },
     link: {
       attrs: {
         url: {

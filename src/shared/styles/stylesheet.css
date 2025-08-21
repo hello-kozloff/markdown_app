@@ -181,4 +181,8 @@
   ol {
     @apply my-6 pl-6;
   }
+
+  .markdown-highlight {
+    @apply p-px text-amber-500 bg-amber-500/10;
+  }
 }
