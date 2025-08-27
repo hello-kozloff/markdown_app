@@ -36,12 +36,11 @@ export function useMarkdownContext({
 
   const dispatchTransaction =
     useCallback(
-      (transaction: Transaction) => {
-        if (!editorState) return;
+      (transaction: Transaction) =>
+        editorState &&
         setEditorState(
           editorState.apply(transaction)
-        );
-      },
+        ),
       [editorState]
     );
 
