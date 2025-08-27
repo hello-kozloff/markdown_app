@@ -18,18 +18,15 @@ export function cn(
 export function isMarkActive(
   state: EditorState,
   markType: MarkType
-): boolean {
-  const { from, $from, to, empty } =
-    state.selection;
-
-  return empty
+) {
+  return state.selection.empty
     ? !!markType.isInSet(
         state.storedMarks ||
-          $from.marks()
+          state.selection.$from.marks()
       )
     : state.doc.rangeHasMark(
-        from,
-        to,
+        state.selection.from,
+        state.selection.to,
         markType
       );
 }
