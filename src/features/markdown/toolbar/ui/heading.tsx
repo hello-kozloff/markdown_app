@@ -24,38 +24,79 @@ export function Heading() {
       name="heading"
       icon={HeadingIcon}
       isActive={markdownNode.isActive()}
-      onClick={markdownNode.toggle}
     >
       {[
         {
           name: "heading-1",
           icon: Heading1Icon,
-          attrs: { level: 1 }
+          isActive:
+            markdownNode.isActive({
+              level: 1
+            }),
+          onClick: () =>
+            markdownNode.toggle({
+              level: 1
+            })
         },
         {
           name: "heading-2",
           icon: Heading2Icon,
-          attrs: { level: 2 }
+          isActive:
+            markdownNode.isActive({
+              level: 2
+            }),
+          onClick: () =>
+            markdownNode.toggle({
+              level: 2
+            })
         },
         {
           name: "heading-3",
           icon: Heading3Icon,
-          attrs: { level: 3 }
+          isActive:
+            markdownNode.isActive({
+              level: 3
+            }),
+          onClick: () =>
+            markdownNode.toggle({
+              level: 3
+            })
         },
         {
           name: "heading-4",
           icon: Heading4Icon,
-          attrs: { level: 4 }
+          isActive:
+            markdownNode.isActive({
+              level: 4
+            }),
+          onClick: () =>
+            markdownNode.toggle({
+              level: 4
+            })
         },
         {
           name: "heading-5",
           icon: Heading5Icon,
-          attrs: { level: 5 }
+          isActive:
+            markdownNode.isActive({
+              level: 5
+            }),
+          onClick: () =>
+            markdownNode.toggle({
+              level: 5
+            })
         },
         {
           name: "heading-6",
           icon: Heading6Icon,
-          attrs: { level: 6 }
+          isActive:
+            markdownNode.isActive({
+              level: 6
+            }),
+          onClick: () =>
+            markdownNode.toggle({
+              level: 6
+            })
         }
       ]}
     </MarkdownToolbarItem>

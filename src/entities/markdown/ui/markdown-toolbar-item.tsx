@@ -1,1 +1,76 @@
-"use client";import { ForwardRefExoticComponent } from "react";import {  ChevronDownIcon,  LucideProps} from "lucide-react";import {  DropdownMenu,  DropdownMenuContent,  DropdownMenuItem,  DropdownMenuTrigger} from "@/shared/ui/dropdown-menu";import { ToolbarItem } from "@/shared/ui/toolbar";import { useTranslations } from "next-intl";export interface MarkdownToolbarItemProps {  name: string;  icon: ForwardRefExoticComponent<    Omit<LucideProps, "ref">  >;  attrs?: Record<    string,    string | number  >;  children?: Omit<    MarkdownToolbarItemProps,    "children" | "isActive" | "onClick"  >[];  isActive?: boolean;  onClick?: (    attrs?: MarkdownToolbarItemProps["attrs"]  ) => void;}export function MarkdownToolbarItem({  attrs,  icon: IconComponent,  isActive,  children,  onClick}: MarkdownToolbarItemProps) {  const t = useTranslations("toolbar");  if (!!children) {    return (      <DropdownMenu>        <DropdownMenuTrigger className="rounded-full">          <ToolbarItem            as="div"            isActive={isActive}          >            <IconComponent size={16} />            <ChevronDownIcon              size={10}            />          </ToolbarItem>        </DropdownMenuTrigger>        <DropdownMenuContent>          {children.map(            (toolbarItem) => (              <DropdownMenuItem                key={toolbarItem.name}                onClick={() =>                  onClick?.(                    toolbarItem.attrs                  )                }              >                <toolbarItem.icon                  size={16}                />                {t(toolbarItem.name)}              </DropdownMenuItem>            )          )}        </DropdownMenuContent>      </DropdownMenu>    );  }  return (    <ToolbarItem      isActive={isActive}      onClick={() => onClick?.(attrs)}    >      <IconComponent size={16} />    </ToolbarItem>  );}
+"use client";
+
+import { ForwardRefExoticComponent } from "react";
+import { ChevronDownIcon, LucideProps } from "lucide-react";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/shared/ui/dropdown-menu";
+import { ToolbarItem } from "@/shared/ui/toolbar";
+import { useTranslations } from "next-intl";
+
+export interface MarkdownToolbarItemProps {
+  name: string;
+  icon: ForwardRefExoticComponent<
+    Omit<LucideProps, "ref">
+  >;
+  children?: Omit<
+    MarkdownToolbarItemProps,
+    "children"
+  >[];
+  isActive?: boolean;
+  onClick?: () => void;
+}
+
+export function MarkdownToolbarItem({
+  icon: IconComponent,
+  isActive,
+  children,
+  onClick
+}: MarkdownToolbarItemProps) {
+  const t = useTranslations("toolbar");
+
+  if (!!children) {
+    return (
+      <DropdownMenu>
+        <DropdownMenuTrigger className="rounded-full">
+          <ToolbarItem
+            as="div"
+            isActive={isActive}
+          >
+            <IconComponent size={16} />
+            <ChevronDownIcon
+              size={10}
+            />
+          </ToolbarItem>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent>
+          {children.map(
+            (toolbarItem) => (
+              <DropdownMenuItem
+                key={toolbarItem.name}
+                disabled={
+                  toolbarItem.isActive
+                }
+                onClick={
+                  toolbarItem.onClick
+                }
+              >
+                <toolbarItem.icon
+                  size={16}
+                />
+                {t(toolbarItem.name)}
+              </DropdownMenuItem>
+            )
+          )}
+        </DropdownMenuContent>
+      </DropdownMenu>
+    );
+  }
+
+  return (
+    <ToolbarItem
+      isActive={isActive}
+      onClick={onClick}
+    >
+      <IconComponent size={16} />
+    </ToolbarItem>
+  );
+}
