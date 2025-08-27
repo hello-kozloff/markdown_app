@@ -7,7 +7,10 @@ import {
   MarkType,
   NodeType
 } from "prosemirror-model";
-import { EditorState } from "prosemirror-state";
+import {
+  EditorState,
+  Transaction
+} from "prosemirror-state";
 
 export function cn(
   ...inputs: ClassValue[]
@@ -64,6 +67,56 @@ export function isNodeActive(
   );
 
   return found;
+}
+
+export function setTextAlign(
+  align:
+    | "left"
+    | "center"
+    | "right"
+    | "justify"
+) {
+  return (
+    state: EditorState,
+    dispatch?: (tr: Transaction) => void
+  ) => {
+    const { $from, $to } =
+      state.selection;
+
+    let applicable = false;
+
+    state.doc.nodesBetween(
+      $from.pos,
+      $to.pos,
+      (node, pos) => {
+        if (
+          node.isTextblock &&
+          node.type.spec.attrs?.align
+        ) {
+          applicable = true;
+          if (dispatch) {
+            const attrs = {
+              ...node.attrs,
+              align
+            };
+            const tr =
+              state.tr.setNodeMarkup(
+                pos,
+                node.type,
+                attrs,
+                node.marks
+              );
+            dispatch(
+              tr.scrollIntoView()
+            );
+          }
+          return false;
+        }
+      }
+    );
+
+    return applicable;
+  };
 }
 
 export function generateKey(

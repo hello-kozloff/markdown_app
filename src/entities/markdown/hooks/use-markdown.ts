@@ -5,7 +5,8 @@ import {
 import { useCallback } from "react";
 import {
   isMarkActive,
-  isNodeActive
+  isNodeActive,
+  setTextAlign
 } from "@/shared/lib/utils";
 import {
   lift,
@@ -118,6 +119,22 @@ export function useMarkdown() {
       lift(view.state, view.dispatch)
   );
 
+  const _setTextAlign =
+    useEditorEventCallback(
+      (
+        view,
+        align:
+          | "left"
+          | "center"
+          | "right"
+          | "justify" = "left"
+      ) =>
+        setTextAlign(align)(
+          view.state,
+          view.dispatch
+        )
+    );
+
   return {
     getNodeType: _getNodeType,
     getMarkType: _getMarkType,
@@ -126,6 +143,7 @@ export function useMarkdown() {
     toggleMark: _toggleMark,
     setBlockType: _setBlockType,
     wrapIn: _wrapIn,
-    lift: _lift
+    lift: _lift,
+    setTextAlign: _setTextAlign
   };
 }

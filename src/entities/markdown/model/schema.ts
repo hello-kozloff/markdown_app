@@ -7,48 +7,60 @@ export const schema = new Schema({
     paragraph: {
       group: "block",
       content: "inline*",
-      toDOM() {
-        return ["p", 0];
+      attrs: {
+        align: { default: "left" }
       },
-      parseDOM: [{ tag: "p" }]
-    },
-
-    heading: {
-      group: "block",
-      content: "inline*",
-      attrs: { level: { default: 1 } },
       toDOM(node) {
+        const { align } = node.attrs;
         return [
-          `h${node.attrs.level}`,
+          "p",
+          {
+            style: `text-align: ${align}`
+          },
           0
         ];
       },
       parseDOM: [
         {
-          tag: "h1",
-          getAttrs: () => ({ level: 1 })
-        },
-        {
-          tag: "h2",
-          getAttrs: () => ({ level: 2 })
-        },
-        {
-          tag: "h3",
-          getAttrs: () => ({ level: 3 })
-        },
-        {
-          tag: "h4",
-          getAttrs: () => ({ level: 4 })
-        },
-        {
-          tag: "h5",
-          getAttrs: () => ({ level: 5 })
-        },
-        {
-          tag: "h6",
-          getAttrs: () => ({ level: 6 })
+          tag: "p",
+          getAttrs: (dom) => ({
+            align:
+              (dom as HTMLElement).style
+                .textAlign || "left"
+          })
         }
       ]
+    },
+
+    heading: {
+      group: "block",
+      content: "inline*",
+      attrs: {
+        level: { default: 1 },
+        align: { default: "left" }
+      },
+      toDOM(node) {
+        const { level, align } =
+          node.attrs;
+        return [
+          `h${level}`,
+          {
+            style: `text-align: ${align}`
+          },
+          0
+        ];
+      },
+      parseDOM: [1, 2, 3, 4, 5, 6].map(
+        (lvl) => ({
+          tag: `h${lvl}`,
+          getAttrs: (dom) => ({
+            level: lvl,
+            align:
+              (dom as HTMLElement).style
+                .textAlign || "left"
+          })
+        })
+      )
     },
 
     image: {
@@ -99,10 +111,28 @@ export const schema = new Schema({
       content: "block+",
       group: "block",
       defining: true,
-      toDOM() {
-        return ["blockquote", 0];
+      attrs: {
+        align: { default: "left" }
       },
-      parseDOM: [{ tag: "blockquote" }]
+      toDOM(node) {
+        return [
+          "blockquote",
+          {
+            style: `text-align: ${node.attrs.align}`
+          },
+          0
+        ];
+      },
+      parseDOM: [
+        {
+          tag: "blockquote",
+          getAttrs: (dom) => ({
+            align:
+              (dom as HTMLElement).style
+                .textAlign || "left"
+          })
+        }
+      ]
     },
 
     ordered_list: {
