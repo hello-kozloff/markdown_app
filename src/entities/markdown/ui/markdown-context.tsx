@@ -4,13 +4,16 @@ import { PropsWithChildren } from "react";
 import { ProseMirror } from "@handlewithcare/react-prosemirror";
 import { proseMirrorViewPlugins } from "../model/plugins";
 import {
-  useMarkdown,
-  UseMarkdownOptions
+  useMarkdownContext,
+  UseMarkdownContextOptions
 } from "@/entities/markdown";
 
 export type MarkdownContextProps =
   PropsWithChildren<
-    Pick<UseMarkdownOptions, "data">
+    Pick<
+      UseMarkdownContextOptions,
+      "data"
+    >
   >;
 
 export function MarkdownContext({
@@ -20,7 +23,7 @@ export function MarkdownContext({
   const {
     editorState,
     dispatchTransaction
-  } = useMarkdown({
+  } = useMarkdownContext({
     data
   });
 

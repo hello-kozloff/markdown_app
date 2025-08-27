@@ -1,25 +1,18 @@
 "use client";
 
-import {
-  useCallback,
-  useEffect,
-  useState
-} from "react";
-import {
-  EditorState,
-  Transaction
-} from "prosemirror-state";
+import { useCallback, useEffect, useState } from "react";
+import { EditorState, Transaction } from "prosemirror-state";
 import { proseMirrorStatePlugins } from "../model/plugins";
 import { parseMarkdownToProseMirrorDoc } from "../model/parser";
 import { schema } from "../model/schema";
 
-export interface UseMarkdownOptions {
+export interface UseMarkdownContextOptions {
   data: string;
 }
 
-export function useMarkdown({
+export function useMarkdownContext({
   data
-}: UseMarkdownOptions) {
+}: UseMarkdownContextOptions) {
   const [editorState, setEditorState] =
     useState<EditorState | null>(null);
 
