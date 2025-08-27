@@ -16,7 +16,7 @@ export function Underline() {
       name="underline"
       icon={UnderlineIcon}
       isActive={markdownMark.isActive}
-      // onClick={markdownMark.toggle}
+      onClick={markdownMark.toggle}
     />
   );
 }

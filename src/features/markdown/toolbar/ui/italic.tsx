@@ -16,7 +16,7 @@ export function Italic() {
       name="italic"
       icon={ItalicIcon}
       isActive={markdownMark.isActive}
-      // onClick={markdownMark.toggle}
+      onClick={markdownMark.toggle}
     />
   );
 }

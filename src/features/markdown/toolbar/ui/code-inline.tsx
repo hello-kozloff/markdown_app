@@ -16,7 +16,7 @@ export function CodeInline() {
       name="code-inline"
       icon={CodeXmlIcon}
       isActive={markdownMark.isActive}
-      // onClick={markdownMark.toggle}
+      onClick={markdownMark.toggle}
     />
   );
 }

@@ -1,3 +1,5 @@
+"use client";
+
 import { Undo2Icon } from "lucide-react";
 import { MarkdownToolbarItem } from "@/entities/markdown";
 

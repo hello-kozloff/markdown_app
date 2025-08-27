@@ -16,7 +16,7 @@ export function Strike() {
       name="strike"
       icon={StrikethroughIcon}
       isActive={markdownMark.isActive}
-      // onClick={markdownMark.toggle}
+      onClick={markdownMark.toggle}
     />
   );
 }

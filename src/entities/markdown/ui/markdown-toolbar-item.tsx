@@ -1,3 +1,5 @@
+"use client";
+
 import { ForwardRefExoticComponent } from "react";
 import { ChevronDownIcon, LucideProps } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/shared/ui/dropdown-menu";
@@ -15,15 +17,20 @@ export interface MarkdownToolbarItemProps {
   >;
   children?: Omit<
     MarkdownToolbarItemProps,
-    "children" | "isActive"
+    "children" | "isActive" | "onClick"
   >[];
   isActive?: boolean;
+  onClick?: (
+    attrs?: MarkdownToolbarItemProps["attrs"]
+  ) => void;
 }
 
 export function MarkdownToolbarItem({
+  attrs,
   icon: IconComponent,
   isActive,
-  children
+  children,
+  onClick
 }: MarkdownToolbarItemProps) {
   const t = useTranslations("toolbar");
 
@@ -31,7 +38,10 @@ export function MarkdownToolbarItem({
     return (
       <DropdownMenu>
         <DropdownMenuTrigger className="rounded-full">
-          <ToolbarItem as="div">
+          <ToolbarItem
+            as="div"
+            isActive={isActive}
+          >
             <IconComponent size={16} />
             <ChevronDownIcon
               size={10}
@@ -43,6 +53,11 @@ export function MarkdownToolbarItem({
             (toolbarItem) => (
               <DropdownMenuItem
                 key={toolbarItem.name}
+                onClick={() =>
+                  onClick?.(
+                    toolbarItem.attrs
+                  )
+                }
               >
                 <toolbarItem.icon
                   size={16}
@@ -57,7 +72,10 @@ export function MarkdownToolbarItem({
   }
 
   return (
-    <ToolbarItem isActive={isActive}>
+    <ToolbarItem
+      isActive={isActive}
+      onClick={() => onClick?.(attrs)}
+    >
       <IconComponent size={16} />
     </ToolbarItem>
   );

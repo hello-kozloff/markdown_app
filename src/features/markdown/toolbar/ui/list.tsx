@@ -1,3 +1,5 @@
+"use client";
+
 import { ListIcon } from "lucide-react";
 import { MarkdownToolbarItem } from "@/entities/markdown";
 

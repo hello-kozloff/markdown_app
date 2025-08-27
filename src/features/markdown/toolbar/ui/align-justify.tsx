@@ -1,3 +1,5 @@
+"use client";
+
 import { AlignJustifyIcon } from "lucide-react";
 import { MarkdownToolbarItem } from "@/entities/markdown";
 

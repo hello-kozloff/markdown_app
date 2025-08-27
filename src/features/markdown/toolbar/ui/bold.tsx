@@ -16,7 +16,7 @@ export function Bold() {
       name="bold"
       icon={BoldIcon}
       isActive={markdownMark.isActive}
-      // onClick={markdownMark.toggle}
+      onClick={markdownMark.toggle}
     />
   );
 }

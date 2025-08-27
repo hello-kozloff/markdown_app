@@ -24,6 +24,7 @@ export function Heading() {
       name="heading"
       icon={HeadingIcon}
       isActive={markdownNode.isActive()}
+      onClick={markdownNode.toggle}
     >
       {[
         {

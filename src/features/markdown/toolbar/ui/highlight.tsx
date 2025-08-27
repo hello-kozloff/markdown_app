@@ -16,7 +16,7 @@ export function Highlight() {
       name="highlight"
       icon={HighlighterIcon}
       isActive={markdownMark.isActive}
-      // onClick={markdownMark.toggle}
+      onClick={markdownMark.toggle}
     />
   );
 }
