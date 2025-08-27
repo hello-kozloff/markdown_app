@@ -17,8 +17,8 @@ export const useMarkdownMark = ({
 
   const isActive = useMemo(() => {
     return isMarkActive(
-      state.schema.marks[mark],
-      state
+      state,
+      state.schema.marks[mark]
     );
   }, [mark, state]);
 

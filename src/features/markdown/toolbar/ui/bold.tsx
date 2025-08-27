@@ -3,10 +3,12 @@
 import { BoldIcon } from "lucide-react";
 import {
   MarkdownToolbarItem,
+  useMarkdown,
   useMarkdownMark
 } from "@/entities/markdown";
 
 export function Bold() {
+  const markdown = useMarkdown();
   const markdownMark = useMarkdownMark({
     mark: "strong"
   });
@@ -15,7 +17,9 @@ export function Bold() {
     <MarkdownToolbarItem
       name="bold"
       icon={BoldIcon}
-      isActive={markdownMark.isActive}
+      isActive={markdown.isMarkActive(
+        "strong"
+      )}
       onClick={markdownMark.toggle}
     />
   );

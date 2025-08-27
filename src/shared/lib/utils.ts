@@ -13,21 +13,21 @@ export function cn(
 }
 
 export function isMarkActive(
-  mark: MarkType,
-  state: EditorState
+  state: EditorState,
+  markType: MarkType
 ): boolean {
   const { from, $from, to, empty } =
     state.selection;
 
   return empty
-    ? !!mark.isInSet(
+    ? !!markType.isInSet(
         state.storedMarks ||
           $from.marks()
       )
     : state.doc.rangeHasMark(
         from,
         to,
-        mark
+        markType
       );
 }
 
