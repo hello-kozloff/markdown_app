@@ -19,9 +19,9 @@ export function List() {
           name: "bullet-list",
           icon: ListIcon,
           onClick: () =>
-            markdown.setBlockType(
+            markdown.wrapIn(
               markdown.getNodeType(
-                '"bullet_list"'
+                "bullet_list"
               )
             )
         },
@@ -29,9 +29,9 @@ export function List() {
           name: "ordered-list",
           icon: ListIcon,
           onClick: () =>
-            markdown.setBlockType(
+            markdown.wrapIn(
               markdown.getNodeType(
-                '"ordered_list"'
+                "ordered_list"
               )
             )
         }

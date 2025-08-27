@@ -182,6 +182,10 @@
     @apply my-6 pl-6;
   }
 
+  ul, ol {
+    @apply pl-4 flex flex-col gap-2;
+  }
+
   .markdown-highlight {
     @apply p-px text-amber-500 bg-amber-500/10;
   }
