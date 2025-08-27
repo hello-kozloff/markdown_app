@@ -1,51 +1,1 @@
-"use client";
-
-import { useCallback, useEffect, useState } from "react";
-import { EditorState, Transaction } from "prosemirror-state";
-import { proseMirrorStatePlugins } from "../model/plugins";
-import { parseMarkdownToProseMirrorDoc } from "../model/parser";
-import { schema } from "../model/schema";
-
-export interface UseMarkdownContextOptions {
-  data: string;
-}
-
-export function useMarkdownContext({
-  data
-}: UseMarkdownContextOptions) {
-  const [editorState, setEditorState] =
-    useState<EditorState | null>(null);
-
-  useEffect(() => {
-    (async () => {
-      const doc =
-        await parseMarkdownToProseMirrorDoc(
-          data
-        );
-
-      setEditorState(
-        EditorState.create({
-          schema,
-          doc,
-          plugins:
-            proseMirrorStatePlugins
-        })
-      );
-    })();
-  }, [data]);
-
-  const dispatchTransaction =
-    useCallback(
-      (transaction: Transaction) =>
-        editorState &&
-        setEditorState(
-          editorState.apply(transaction)
-        ),
-      [editorState]
-    );
-
-  return {
-    editorState,
-    dispatchTransaction
-  };
-}
+"use client";import {  useCallback,  useEffect,  useState} from "react";import {  EditorState,  Transaction} from "prosemirror-state";import { proseMirrorStatePlugins } from "../model/plugins";import { parseMarkdownToProseMirrorDoc } from "../model/parser";import { schema } from "../model/schema";export interface UseMarkdownContextOptions {  data: string;}export function useMarkdownContext({  data}: UseMarkdownContextOptions) {  const [editorState, setEditorState] =    useState<EditorState | null>(null);  useEffect(() => {    (async () => {      const doc =        await parseMarkdownToProseMirrorDoc(          data        );      setEditorState(        EditorState.create({          schema,          doc,          plugins:            proseMirrorStatePlugins        })      );    })();  }, [data]);  const dispatchTransaction =    useCallback(      (transaction: Transaction) =>        editorState &&        setEditorState(          editorState.apply(transaction)        ),      [editorState]    );  return {    editorState,    dispatchTransaction  };}
