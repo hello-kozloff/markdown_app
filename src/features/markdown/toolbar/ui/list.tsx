@@ -1,1 +1,38 @@
-"use client";import { ListIcon } from "lucide-react";import {  MarkdownToolbarItem,  useMarkdownNode} from "@/entities/markdown";export function List() {  const markdownNodeBullet =    useMarkdownNode({      node: "bullet_list"    });  const markdownNodeOrdered =    useMarkdownNode({      node: "ordered_list"    });  return (    <MarkdownToolbarItem      name="list"      icon={ListIcon}    >      {[        {          name: "bullet-list",          icon: ListIcon,          onClick: () =>            markdownNodeBullet.toggle()        },        {          name: "ordered-list",          icon: ListIcon,          onClick: () =>            markdownNodeOrdered.toggle()        }      ]}    </MarkdownToolbarItem>  );}
+"use client";
+
+import { ListIcon } from "lucide-react";
+import {
+  MarkdownToolbarItem,
+  useMarkdownNode
+} from "@/entities/markdown";
+
+export function List() {
+  const markdownNode =
+    useMarkdownNode();
+
+  return (
+    <MarkdownToolbarItem
+      name="list"
+      icon={ListIcon}
+    >
+      {[
+        {
+          name: "bullet-list",
+          icon: ListIcon,
+          onClick: () =>
+            markdownNode.toggle(
+              "bullet_list"
+            )
+        },
+        {
+          name: "ordered-list",
+          icon: ListIcon,
+          onClick: () =>
+            markdownNode.toggle(
+              "ordered_list"
+            )
+        }
+      ]}
+    </MarkdownToolbarItem>
+  );
+}
