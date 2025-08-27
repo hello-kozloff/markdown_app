@@ -1,25 +1,25 @@
 "use client";
 
 import {
-  MarkdownAlignCenter,
-  MarkdownAlignJustify,
-  MarkdownAlignLeft,
-  MarkdownAlignRight,
-  MarkdownBlockquote,
-  MarkdownBold,
-  MarkdownCodeBlock,
-  MarkdownCodeInline,
-  MarkdownHeading,
-  MarkdownHighlight,
-  MarkdownImage,
-  MarkdownItalic,
-  MarkdownLink,
-  MarkdownList,
-  MarkdownRedo,
-  MarkdownStrike,
-  MarkdownUnderline,
-  MarkdownUndo
-} from "@/features/markdown";
+  AlignCenter,
+  AlignJustify,
+  AlignLeft,
+  AlignRight,
+  Blockquote,
+  Bold,
+  CodeBlock,
+  CodeInline,
+  Heading,
+  Highlight,
+  Image,
+  Italic,
+  Link,
+  List,
+  Redo,
+  Strike,
+  Underline,
+  Undo
+} from "@/features/markdown/toolbar";
 import {
   Toolbar,
   ToolbarGroup
@@ -29,30 +29,30 @@ export function MarkdownToolbar() {
   return (
     <Toolbar sticky>
       <ToolbarGroup>
-        <MarkdownUndo />
-        <MarkdownRedo />
+        <Undo />
+        <Redo />
       </ToolbarGroup>
       <ToolbarGroup>
-        <MarkdownHeading />
-        <MarkdownList />
-        <MarkdownBlockquote />
-        <MarkdownCodeBlock />
-        <MarkdownImage />
+        <Heading />
+        <List />
+        <Blockquote />
+        <CodeBlock />
+        <Image />
       </ToolbarGroup>
       <ToolbarGroup>
-        <MarkdownBold />
-        <MarkdownItalic />
-        <MarkdownUnderline />
-        <MarkdownStrike />
-        <MarkdownCodeInline />
-        <MarkdownHighlight />
-        <MarkdownLink />
+        <Bold />
+        <Italic />
+        <Underline />
+        <Strike />
+        <CodeInline />
+        <Highlight />
+        <Link />
       </ToolbarGroup>
       <ToolbarGroup>
-        <MarkdownAlignLeft />
-        <MarkdownAlignCenter />
-        <MarkdownAlignRight />
-        <MarkdownAlignJustify />
+        <AlignLeft />
+        <AlignCenter />
+        <AlignRight />
+        <AlignJustify />
       </ToolbarGroup>
     </Toolbar>
   );
