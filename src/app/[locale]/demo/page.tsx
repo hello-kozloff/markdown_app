@@ -1,4 +1,4 @@
-import { Example } from "@/dev/__DEV__";
+import { Example } from "@/dev/example";
 
 export default function Test() {
   return (

@@ -14,9 +14,7 @@ const content = `
 
 export default function DocumentPage() {
   return (
-    <MarkdownContext
-      initialMarkdown={content}
-    >
+    <MarkdownContext data={content}>
       <MarkdownToolbar />
       <MarkdownContent />
     </MarkdownContext>

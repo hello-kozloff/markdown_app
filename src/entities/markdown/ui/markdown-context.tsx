@@ -10,21 +10,18 @@ import {
 
 export type MarkdownContextProps =
   PropsWithChildren<
-    Pick<
-      UseMarkdownOptions,
-      "initialMarkdown"
-    >
+    Pick<UseMarkdownOptions, "data">
   >;
 
 export function MarkdownContext({
-  initialMarkdown,
+  data,
   children
 }: MarkdownContextProps) {
   const {
     editorState,
     dispatchTransaction
   } = useMarkdown({
-    initialMarkdown
+    data
   });
 
   if (!editorState) {
