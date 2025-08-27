@@ -2,9 +2,26 @@ import { useEditorEventCallback, useEditorState } from "@handlewithcare/react-pr
 import { useCallback } from "react";
 import { isMarkActive, isNodeActive } from "@/shared/lib/utils";
 import { lift, setBlockType, wrapIn } from "prosemirror-commands";
+import { Attrs, NodeType } from "prosemirror-model";
 
 export function useMarkdown() {
   const state = useEditorState();
+
+  const _getNodeType =
+    useEditorEventCallback(
+      (view, node: string) => {
+        const nodeType =
+          view.state.schema.nodes[node];
+
+        if (!nodeType) {
+          throw new Error(
+            `Node '${nodeType}' not found in state schema!`
+          );
+        }
+
+        return nodeType;
+      }
+    );
 
   const _isMarkActive = useCallback(
     (mark: string) =>
@@ -16,13 +33,7 @@ export function useMarkdown() {
   );
 
   const _isNodeActive = useCallback(
-    (
-      node: string,
-      attrs?: Record<
-        string,
-        string | number
-      >
-    ) =>
+    (node: string, attrs?: Attrs) =>
       isNodeActive(state, node, attrs),
     [state]
   );
@@ -31,56 +42,35 @@ export function useMarkdown() {
     useEditorEventCallback(
       (
         view,
-        node: string,
-        attrs?: Record<
-          string,
-          string | number
-        >
-      ) => {
-        const type =
-          view.state.schema.nodes[node];
-
-        if (!type) {
-          throw new Error(
-            `Node found node '${node}' in markdown state scheme!`
-          );
-        }
-
-        if (
-          _isNodeActive(node, attrs)
-        ) {
-          if (type.isTextblock) {
-            return setBlockType(
-              view.state.schema.nodes[
-                "paragraph"
-              ]
-            )(
-              view.state,
-              view.dispatch
-            );
-          }
-
-          return lift(
-            view.state,
-            view.dispatch
-          );
-        }
-
-        if (type.isTextblock) {
-          return setBlockType(
-            type,
-            attrs
-          )(view.state, view.dispatch);
-        }
-
-        return wrapIn(type)(
+        type: NodeType,
+        attrs?: Attrs
+      ) =>
+        setBlockType(type, attrs)(
           view.state,
           view.dispatch
-        );
-      }
+        )
     );
 
+  const __wrapIn =
+    useEditorEventCallback(
+      (
+        view,
+        type: NodeType,
+        attrs?: Attrs
+      ) =>
+        wrapIn(type, attrs)(
+          view.state,
+          view.dispatch
+        )
+    );
+
+  const __lift = useEditorEventCallback(
+    (view) =>
+      lift(view.state, view.dispatch)
+  );
+
   return {
+    getNodeType: _getNodeType,
     isMarkActive: _isMarkActive,
     isNodeActive: _isNodeActive,
     setBlockType: _setBlockType

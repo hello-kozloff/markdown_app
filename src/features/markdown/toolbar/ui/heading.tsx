@@ -43,7 +43,9 @@ export function Heading() {
         ),
         onClick: () =>
           markdown.setBlockType(
-            "heading",
+            markdown.getNodeType(
+              "heading"
+            ),
             { level: index + 1 }
           )
       }))}

@@ -3,14 +3,11 @@
 import { TextQuoteIcon } from "lucide-react";
 import {
   MarkdownToolbarItem,
-  useMarkdown,
-  useMarkdownNode
+  useMarkdown
 } from "@/entities/markdown";
 
 export function Blockquote() {
   const markdown = useMarkdown();
-  const markdownNode =
-    useMarkdownNode();
 
   return (
     <MarkdownToolbarItem
@@ -21,7 +18,9 @@ export function Blockquote() {
       )}
       onClick={() =>
         markdown.setBlockType(
-          "blockquote"
+          markdown.getNodeType(
+            "blockquote"
+          )
         )
       }
     />
