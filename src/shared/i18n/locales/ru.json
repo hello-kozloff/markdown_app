@@ -3,7 +3,7 @@
     "email": "Почта",
     "password": "Пароль"
   },
-  "tools": {
+  "toolbar": {
     "heading-1": "Заголовок 1",
     "heading-2": "Заголовок 2",
     "heading-3": "Заголовок 3",

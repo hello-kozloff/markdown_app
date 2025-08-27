@@ -1,15 +1,8 @@
 import { ForwardRefExoticComponent } from "react";
-import {
-  ChevronDownIcon,
-  LucideProps
-} from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger
-} from "@/shared/ui/dropdown-menu";
+import { ChevronDownIcon, LucideProps } from "lucide-react";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/shared/ui/dropdown-menu";
 import { ToolbarItem } from "@/shared/ui/toolbar";
+import { useTranslations } from "next-intl";
 
 export interface MarkdownToolbarItemProps {
   name: string;
@@ -30,10 +23,12 @@ export function MarkdownToolbarItem({
   icon: IconComponent,
   children
 }: MarkdownToolbarItemProps) {
+  const t = useTranslations("toolbar");
+
   if (!!children) {
     return (
       <DropdownMenu>
-        <DropdownMenuTrigger>
+        <DropdownMenuTrigger className="rounded-full">
           <ToolbarItem as="div">
             <IconComponent size={16} />
             <ChevronDownIcon
@@ -50,7 +45,7 @@ export function MarkdownToolbarItem({
                 <toolbarItem.icon
                   size={16}
                 />
-                {toolbarItem.name}
+                {t(toolbarItem.name)}
               </DropdownMenuItem>
             )
           )}
