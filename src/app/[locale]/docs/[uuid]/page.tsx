@@ -4,15 +4,12 @@ import {
   AlignJustify,
   AlignLeft,
   AlignRight,
-  Blockquote,
   Bold,
   CodeInline,
   Heading,
   Highlight,
-  Image,
   Italic,
   Link,
-  List,
   Redo,
   Strike,
   Underline,
@@ -35,10 +32,10 @@ export default function DocumentPage() {
       toolbar={[
         [Undo, Redo],
         [
-          Heading,
-          List,
-          Blockquote,
-          Image
+          Heading
+          // List,
+          // Blockquote,
+          // Image
         ],
         [
           Bold,

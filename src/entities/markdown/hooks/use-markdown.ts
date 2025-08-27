@@ -1,8 +1,21 @@
-import { useEditorEventCallback, useEditorState } from "@handlewithcare/react-prosemirror";
+import {
+  useEditorEventCallback,
+  useEditorState
+} from "@handlewithcare/react-prosemirror";
 import { useCallback } from "react";
-import { isMarkActive, isNodeActive } from "@/shared/lib/utils";
-import { lift, setBlockType, wrapIn } from "prosemirror-commands";
-import { Attrs, NodeType } from "prosemirror-model";
+import {
+  isMarkActive,
+  isNodeActive
+} from "@/shared/lib/utils";
+import {
+  lift,
+  setBlockType,
+  wrapIn
+} from "prosemirror-commands";
+import {
+  Attrs,
+  NodeType
+} from "prosemirror-model";
 
 export function useMarkdown() {
   const state = useEditorState();
@@ -33,7 +46,7 @@ export function useMarkdown() {
   );
 
   const _isNodeActive = useCallback(
-    (node: string, attrs?: Attrs) =>
+    (node: string, attrs: Attrs = {}) =>
       isNodeActive(state, node, attrs),
     [state]
   );
@@ -42,29 +55,29 @@ export function useMarkdown() {
     useEditorEventCallback(
       (
         view,
-        type: NodeType,
-        attrs?: Attrs
+        nodeType: NodeType,
+        attrs: Attrs = {}
       ) =>
-        setBlockType(type, attrs)(
+        setBlockType(nodeType, attrs)(
           view.state,
           view.dispatch
         )
     );
 
-  const __wrapIn =
+  const _wrapIn =
     useEditorEventCallback(
       (
         view,
-        type: NodeType,
-        attrs?: Attrs
+        nodeType: NodeType,
+        attrs: Attrs = {}
       ) =>
-        wrapIn(type, attrs)(
+        wrapIn(nodeType, attrs)(
           view.state,
           view.dispatch
         )
     );
 
-  const __lift = useEditorEventCallback(
+  const _lift = useEditorEventCallback(
     (view) =>
       lift(view.state, view.dispatch)
   );
@@ -73,6 +86,8 @@ export function useMarkdown() {
     getNodeType: _getNodeType,
     isMarkActive: _isMarkActive,
     isNodeActive: _isNodeActive,
-    setBlockType: _setBlockType
+    setBlockType: _setBlockType,
+    wrapIn: _wrapIn,
+    lift: _lift
   };
 }

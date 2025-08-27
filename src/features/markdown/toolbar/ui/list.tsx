@@ -3,12 +3,11 @@
 import { ListIcon } from "lucide-react";
 import {
   MarkdownToolbarItem,
-  useMarkdownNode
+  useMarkdown
 } from "@/entities/markdown";
 
 export function List() {
-  const markdownNode =
-    useMarkdownNode();
+  const markdown = useMarkdown();
 
   return (
     <MarkdownToolbarItem
@@ -20,16 +19,20 @@ export function List() {
           name: "bullet-list",
           icon: ListIcon,
           onClick: () =>
-            markdownNode.toggle(
-              "bullet_list"
+            markdown.setBlockType(
+              markdown.getNodeType(
+                '"bullet_list"'
+              )
             )
         },
         {
           name: "ordered-list",
           icon: ListIcon,
           onClick: () =>
-            markdownNode.toggle(
-              "ordered_list"
+            markdown.setBlockType(
+              markdown.getNodeType(
+                '"ordered_list"'
+              )
             )
         }
       ]}
