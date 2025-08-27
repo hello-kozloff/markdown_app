@@ -3,24 +3,24 @@
 import { CodeXmlIcon } from "lucide-react";
 import {
   MarkdownToolbarItem,
-  useMarkdown,
-  useMarkdownMark
+  useMarkdown
 } from "@/entities/markdown";
 
 export function CodeInline() {
   const markdown = useMarkdown();
-  const markdownMark = useMarkdownMark({
-    mark: "code"
-  });
+  const markType =
+    markdown.getMarkType("code");
 
   return (
     <MarkdownToolbarItem
       name="code-inline"
       icon={CodeXmlIcon}
       isActive={markdown.isMarkActive(
-        "code"
+        markType
       )}
-      onClick={markdownMark.toggle}
+      onClick={() =>
+        markdown.toggleMark(markType)
+      }
     />
   );
 }

@@ -3,24 +3,25 @@
 import { UnderlineIcon } from "lucide-react";
 import {
   MarkdownToolbarItem,
-  useMarkdown,
-  useMarkdownMark
+  useMarkdown
 } from "@/entities/markdown";
 
 export function Underline() {
   const markdown = useMarkdown();
-  const markdownMark = useMarkdownMark({
-    mark: "underline"
-  });
+  const markType = markdown.getMarkType(
+    "underline"
+  );
 
   return (
     <MarkdownToolbarItem
       name="underline"
       icon={UnderlineIcon}
       isActive={markdown.isMarkActive(
-        "underline"
+        markType
       )}
-      onClick={markdownMark.toggle}
+      onClick={() =>
+        markdown.toggleMark(markType)
+      }
     />
   );
 }

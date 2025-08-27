@@ -3,24 +3,25 @@
 import { HighlighterIcon } from "lucide-react";
 import {
   MarkdownToolbarItem,
-  useMarkdown,
-  useMarkdownMark
+  useMarkdown
 } from "@/entities/markdown";
 
 export function Highlight() {
   const markdown = useMarkdown();
-  const markdownMark = useMarkdownMark({
-    mark: "highlight"
-  });
+  const markType = markdown.getMarkType(
+    "highlight"
+  );
 
   return (
     <MarkdownToolbarItem
       name="highlight"
       icon={HighlighterIcon}
       isActive={markdown.isMarkActive(
-        "highlight"
+        markType
       )}
-      onClick={markdownMark.toggle}
+      onClick={() =>
+        markdown.toggleMark(markType)
+      }
     />
   );
 }

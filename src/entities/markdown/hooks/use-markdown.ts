@@ -10,10 +10,12 @@ import {
 import {
   lift,
   setBlockType,
+  toggleMark,
   wrapIn
 } from "prosemirror-commands";
 import {
   Attrs,
+  MarkType,
   NodeType
 } from "prosemirror-model";
 
@@ -36,12 +38,25 @@ export function useMarkdown() {
     [state.schema.nodes]
   );
 
+  const _getMarkType = useCallback(
+    (mark: string) => {
+      const markType =
+        state.schema.marks[mark];
+
+      if (!markType) {
+        throw new Error(
+          `Mark '${markType}' not found in state schema!`
+        );
+      }
+
+      return markType;
+    },
+    [state.schema.marks]
+  );
+
   const _isMarkActive = useCallback(
-    (mark: string) =>
-      isMarkActive(
-        state,
-        state.schema.marks[mark]
-      ),
+    (markType: MarkType) =>
+      isMarkActive(state, markType),
     [state]
   );
 
@@ -57,6 +72,20 @@ export function useMarkdown() {
       ),
     [state]
   );
+
+  const _toggleMark =
+    useEditorEventCallback(
+      (
+        view,
+        markType: MarkType,
+        attrs: Attrs = {}
+      ) =>
+        toggleMark(markType, attrs)(
+          view.state,
+          view.dispatch,
+          view
+        )
+    );
 
   const _setBlockType =
     useEditorEventCallback(
@@ -91,8 +120,10 @@ export function useMarkdown() {
 
   return {
     getNodeType: _getNodeType,
+    getMarkType: _getMarkType,
     isMarkActive: _isMarkActive,
     isNodeActive: _isNodeActive,
+    toggleMark: _toggleMark,
     setBlockType: _setBlockType,
     wrapIn: _wrapIn,
     lift: _lift

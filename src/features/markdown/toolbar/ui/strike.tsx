@@ -3,24 +3,24 @@
 import { StrikethroughIcon } from "lucide-react";
 import {
   MarkdownToolbarItem,
-  useMarkdown,
-  useMarkdownMark
+  useMarkdown
 } from "@/entities/markdown";
 
 export function Strike() {
   const markdown = useMarkdown();
-  const markdownMark = useMarkdownMark({
-    mark: "strike"
-  });
+  const markType =
+    markdown.getMarkType("strike");
 
   return (
     <MarkdownToolbarItem
       name="strike"
       icon={StrikethroughIcon}
       isActive={markdown.isMarkActive(
-        "strike"
+        markType
       )}
-      onClick={markdownMark.toggle}
+      onClick={() =>
+        markdown.toggleMark(markType)
+      }
     />
   );
 }

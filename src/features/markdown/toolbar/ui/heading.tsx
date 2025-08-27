@@ -9,7 +9,10 @@ import {
   Heading6Icon,
   HeadingIcon
 } from "lucide-react";
-import { MarkdownToolbarItem, useMarkdown } from "@/entities/markdown";
+import {
+  MarkdownToolbarItem,
+  useMarkdown
+} from "@/entities/markdown";
 
 export function Heading() {
   const markdown = useMarkdown();

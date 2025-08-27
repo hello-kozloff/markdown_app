@@ -3,24 +3,24 @@
 import { BoldIcon } from "lucide-react";
 import {
   MarkdownToolbarItem,
-  useMarkdown,
-  useMarkdownMark
+  useMarkdown
 } from "@/entities/markdown";
 
 export function Bold() {
   const markdown = useMarkdown();
-  const markdownMark = useMarkdownMark({
-    mark: "strong"
-  });
+  const markType =
+    markdown.getMarkType("strong");
 
   return (
     <MarkdownToolbarItem
       name="bold"
       icon={BoldIcon}
       isActive={markdown.isMarkActive(
-        "strong"
+        markType
       )}
-      onClick={markdownMark.toggle}
+      onClick={() =>
+        markdown.toggleMark(markType)
+      }
     />
   );
 }
