@@ -9,20 +9,19 @@ import {
   Heading6Icon,
   HeadingIcon
 } from "lucide-react";
-import {
-  MarkdownToolbarItem,
-  useMarkdown
-} from "@/entities/markdown";
+import { MarkdownToolbarItem, useMarkdown } from "@/entities/markdown";
 
 export function Heading() {
   const markdown = useMarkdown();
+  const nodeType =
+    markdown.getNodeType("heading");
 
   return (
     <MarkdownToolbarItem
       name="heading"
       icon={HeadingIcon}
       isActive={markdown.isNodeActive(
-        "heading"
+        nodeType
       )}
     >
       {Array.from({
@@ -38,14 +37,12 @@ export function Heading() {
           Heading6Icon
         ][index],
         isActive: markdown.isNodeActive(
-          "heading",
+          nodeType,
           { level: index + 1 }
         ),
         onClick: () =>
           markdown.setBlockType(
-            markdown.getNodeType(
-              "heading"
-            ),
+            nodeType,
             { level: index + 1 }
           )
       }))}

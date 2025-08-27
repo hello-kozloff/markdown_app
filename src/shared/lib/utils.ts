@@ -3,7 +3,10 @@ import {
   clsx
 } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { MarkType } from "prosemirror-model";
+import {
+  MarkType,
+  NodeType
+} from "prosemirror-model";
 import { EditorState } from "prosemirror-state";
 
 export function cn(
@@ -33,27 +36,26 @@ export function isMarkActive(
 
 export function isNodeActive(
   state: EditorState,
-  name: string,
+  nodeType: NodeType,
   attrs: Record<
     string,
     string | number
   > = {}
 ) {
-  const { from, to } = state.selection;
-
   let found = false;
 
   state.doc.nodesBetween(
-    from,
-    to,
+    state.selection.from,
+    state.selection.to,
     (node) => {
-      if (node.type.name === name) {
+      if (node.type === nodeType) {
         const hasAttrs = Object.entries(
           attrs
-        ).every(
-          ([key, value]) =>
+        ).every(([key, value]) => {
+          return (
             node.attrs[key] === value
-        );
+          );
+        });
 
         if (hasAttrs) {
           found = true;

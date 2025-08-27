@@ -20,21 +20,21 @@ import {
 export function useMarkdown() {
   const state = useEditorState();
 
-  const _getNodeType =
-    useEditorEventCallback(
-      (view, node: string) => {
-        const nodeType =
-          view.state.schema.nodes[node];
+  const _getNodeType = useCallback(
+    (node: string) => {
+      const nodeType =
+        state.schema.nodes[node];
 
-        if (!nodeType) {
-          throw new Error(
-            `Node '${nodeType}' not found in state schema!`
-          );
-        }
-
-        return nodeType;
+      if (!nodeType) {
+        throw new Error(
+          `Node '${nodeType}' not found in state schema!`
+        );
       }
-    );
+
+      return nodeType;
+    },
+    [state.schema.nodes]
+  );
 
   const _isMarkActive = useCallback(
     (mark: string) =>
@@ -46,8 +46,15 @@ export function useMarkdown() {
   );
 
   const _isNodeActive = useCallback(
-    (node: string, attrs: Attrs = {}) =>
-      isNodeActive(state, node, attrs),
+    (
+      nodeType: NodeType,
+      attrs: Attrs = {}
+    ) =>
+      isNodeActive(
+        state,
+        nodeType,
+        attrs
+      ),
     [state]
   );
 
