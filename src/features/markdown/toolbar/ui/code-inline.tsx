@@ -1,16 +1,21 @@
+"use client";
+
 import { CodeXmlIcon } from "lucide-react";
-import { MarkdownToolbarItem } from "@/entities/markdown";
+import {
+  MarkdownToolbarItem,
+  useMarkdownMark
+} from "@/entities/markdown";
 
 export function CodeInline() {
-  // const markdownMark = useMarkdownMark({
-  //   mark: "code"
-  // });
+  const markdownMark = useMarkdownMark({
+    mark: "code"
+  });
 
   return (
     <MarkdownToolbarItem
       name="code-inline"
       icon={CodeXmlIcon}
-      // isActive={markdownMark.isActive}
+      isActive={markdownMark.isActive}
       // onClick={markdownMark.toggle}
     />
   );

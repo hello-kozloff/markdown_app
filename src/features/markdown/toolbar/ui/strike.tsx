@@ -1,16 +1,21 @@
+"use client";
+
 import { StrikethroughIcon } from "lucide-react";
-import { MarkdownToolbarItem } from "@/entities/markdown";
+import {
+  MarkdownToolbarItem,
+  useMarkdownMark
+} from "@/entities/markdown";
 
 export function Strike() {
-  // const markdownMark = useMarkdownMark({
-  //   mark: "strike"
-  // });
+  const markdownMark = useMarkdownMark({
+    mark: "strike"
+  });
 
   return (
     <MarkdownToolbarItem
       name="strike"
       icon={StrikethroughIcon}
-      // isActive={markdownMark.isActive}
+      isActive={markdownMark.isActive}
       // onClick={markdownMark.toggle}
     />
   );

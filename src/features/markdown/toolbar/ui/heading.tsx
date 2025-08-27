@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Heading1Icon,
   Heading2Icon,
@@ -7,18 +9,21 @@ import {
   Heading6Icon,
   HeadingIcon
 } from "lucide-react";
-import { MarkdownToolbarItem } from "@/entities/markdown";
+import {
+  MarkdownToolbarItem,
+  useMarkdownNode
+} from "@/entities/markdown";
 
 export function Heading() {
-  // const t = useTranslations("tools");
-  // const markdownNode = useMarkdownNode({
-  //   node: "heading"
-  // });
+  const markdownNode = useMarkdownNode({
+    node: "heading"
+  });
 
   return (
     <MarkdownToolbarItem
       name="heading"
       icon={HeadingIcon}
+      isActive={markdownNode.isActive()}
     >
       {[
         {
