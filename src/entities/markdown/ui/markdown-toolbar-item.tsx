@@ -68,6 +68,11 @@ export function MarkdownToolbarItem({
             (toolbarItem, index) => (
               <DropdownMenuItem
                 key={toolbarItem.name}
+                icon={
+                  <toolbarItem.icon
+                    size={16}
+                  />
+                }
                 variant={cn({
                   active:
                     markdown.isNodeActive(
@@ -83,9 +88,6 @@ export function MarkdownToolbarItem({
                   toolbarItem.onClick
                 }
               >
-                <toolbarItem.icon
-                  size={16}
-                />
                 {t(toolbarItem.name)}
               </DropdownMenuItem>
             )

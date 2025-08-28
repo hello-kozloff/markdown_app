@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { ReactNode } from "react";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
 
@@ -59,8 +60,7 @@ function DropdownMenuContent({
         sideOffset={sideOffset}
         align="start"
         className={cn(
-          "p-2 bg-background border rounded-2xl",
-          "grid gap-1",
+          "py-4 bg-background border rounded-2xl",
           "z-50 max-h-(--radix-dropdown-menu-content-available-height) origin-(--radix-dropdown-menu-content-transform-origin)",
           "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
           "data-[state=closed]:zoom-out-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
@@ -89,13 +89,16 @@ function DropdownMenuGroup({
 
 function DropdownMenuItem({
   className,
+  icon,
   inset,
   variant = "default",
+  children,
   ...props
 }: React.ComponentProps<
   typeof DropdownMenuPrimitive.Item
 > & {
   inset?: boolean;
+  icon?: ReactNode;
   variant?:
     | "default"
     | "active"
@@ -103,21 +106,29 @@ function DropdownMenuItem({
 }) {
   return (
     <DropdownMenuPrimitive.Item
+      {...props}
       data-slot="dropdown-menu-item"
       data-inset={inset}
       data-variant={variant}
       className={cn(
-        "px-2 py-1.5",
-        "flex items-center gap-2 pr-8",
+        "flex items-center gap-2",
         "text-sm data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8",
-        "data-[variant=active]:bg-blue-500/20 focus:bg-accent focus:text-accent-foreground",
-        "relative outline-hidden cursor-pointer select-none rounded-full",
+        " data-[variant=active]:text-blue-500 data-[variant=active]:bg-blue-500/10 focus:bg-accent focus:text-accent-foreground",
+        "relative outline-hidden cursor-pointer select-none",
         "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0[&_svg:not([class*='text-'])]:text-muted-foreground",
         "data-[variant=destructive]:bg-black",
         className
       )}
-      {...props}
-    />
+    >
+      {icon && (
+        <div className="pl-4 flex-shrink-0">
+          {icon}
+        </div>
+      )}
+      <div className="w-full py-2 pr-8 border-b">
+        {children}
+      </div>
+    </DropdownMenuPrimitive.Item>
   );
 }
 
