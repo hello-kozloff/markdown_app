@@ -1,8 +1,4 @@
-import {
-  ButtonHTMLAttributes,
-  ElementType,
-  PropsWithChildren
-} from "react";
+import { ButtonHTMLAttributes, ElementType, PropsWithChildren } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/shared/lib/utils";
 import { PropsWithClassName } from "@/shared/types/utils";
@@ -42,7 +38,7 @@ export function Toolbar({
       {...props}
       className={cn(
         className,
-        "flex border-b bg-background",
+        "flex border-b bg-background overflow-x-auto no-scrollbar flex-shrink-0",
         {
           "sticky top-0": sticky
         }

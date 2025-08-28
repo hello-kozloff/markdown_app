@@ -206,3 +206,7 @@
     @apply p-px text-amber-500 bg-amber-500/10;
   }
 }
+
+.no-scrollbar {
+  @apply [scrollbar-width:none] [&::-webkit-scrollbar]:hidden;
+}
