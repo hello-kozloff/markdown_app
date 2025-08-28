@@ -5,13 +5,15 @@ import { motion } from "framer-motion";
 
 export const markdownContentMotion = {
   initial: {
-    opacity: 0
+    opacity: 0,
+    y: 4
   },
   animate: {
-    opacity: 1
+    opacity: 1,
+    y: 0
   },
   transition: {
-    duration: 1
+    duration: 0.4
   }
 };
 

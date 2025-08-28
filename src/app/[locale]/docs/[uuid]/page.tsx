@@ -29,7 +29,7 @@ const data = `
 
 export default function DocumentPage() {
   return (
-    <div className="h-svh flex flex-col">
+    <div className="h-svh flex flex-col overflow-hidden">
       <Markdown
         name="example"
         data={data}
