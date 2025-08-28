@@ -2,11 +2,7 @@
 
 import * as React from "react";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
-import {
-  CheckIcon,
-  ChevronRightIcon,
-  CircleIcon
-} from "lucide-react";
+import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
 
 import { cn } from "@/shared/lib/utils";
 
@@ -64,6 +60,7 @@ function DropdownMenuContent({
         align="start"
         className={cn(
           "p-2 bg-background border rounded-2xl",
+          "grid gap-1",
           "z-50 max-h-(--radix-dropdown-menu-content-available-height) origin-(--radix-dropdown-menu-content-transform-origin)",
           "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
           "data-[state=closed]:zoom-out-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
@@ -99,7 +96,10 @@ function DropdownMenuItem({
   typeof DropdownMenuPrimitive.Item
 > & {
   inset?: boolean;
-  variant?: "default" | "destructive";
+  variant?:
+    | "default"
+    | "active"
+    | string;
 }) {
   return (
     <DropdownMenuPrimitive.Item
@@ -107,8 +107,13 @@ function DropdownMenuItem({
       data-inset={inset}
       data-variant={variant}
       className={cn(
-        "focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive [&_svg:not([class*='text-'])]:text-muted-foreground relative cursor-pointer rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "px-2 py-1.5",
         "flex items-center gap-2 pr-8",
+        "text-sm data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8",
+        "data-[variant=active]:bg-blue-500/20 focus:bg-accent focus:text-accent-foreground",
+        "relative outline-hidden cursor-pointer select-none rounded-full",
+        "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0[&_svg:not([class*='text-'])]:text-muted-foreground",
+        "data-[variant=destructive]:bg-black",
         className
       )}
       {...props}
