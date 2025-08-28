@@ -1,10 +1,7 @@
 "use client";
 
 import { JSX } from "react";
-import {
-  Toolbar,
-  ToolbarGroup
-} from "@/shared/ui/toolbar";
+import { Toolbar, ToolbarGroup } from "@/shared/ui/toolbar";
 import { generateKey } from "@/shared/lib/utils";
 
 export interface MarkdownToolbarProps {
@@ -22,9 +19,7 @@ export const markdownToolbarMotion = {
     y: 0
   },
   transition: {
-    duration: 0.4,
-    ease: "easeOut",
-    type: "tween"
+    duration: 0.4
   }
 };
 

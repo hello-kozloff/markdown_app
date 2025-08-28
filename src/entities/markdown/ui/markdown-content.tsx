@@ -11,9 +11,7 @@ export const markdownContentMotion = {
     opacity: 1
   },
   transition: {
-    duration: 1,
-    ease: "easeOut",
-    type: "tween"
+    duration: 1
   }
 };
 
