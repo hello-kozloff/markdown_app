@@ -1,8 +1,11 @@
 import {
+  useCallback,
+  useMemo
+} from "react";
+import {
   useEditorEventCallback,
   useEditorState
 } from "@handlewithcare/react-prosemirror";
-import { useCallback } from "react";
 import {
   isMarkActive,
   isNodeActive,
@@ -19,6 +22,12 @@ import {
   MarkType,
   NodeType
 } from "prosemirror-model";
+import {
+  redo,
+  redoDepth,
+  undo,
+  undoDepth
+} from "prosemirror-history";
 
 export function useMarkdown() {
   const state = useEditorState();
@@ -135,6 +144,26 @@ export function useMarkdown() {
         )
     );
 
+  const _undo = useEditorEventCallback(
+    (view) =>
+      undo(view.state, view.dispatch)
+  );
+
+  const _redo = useEditorEventCallback(
+    (view) =>
+      redo(view.state, view.dispatch)
+  );
+
+  const isCanUndo = useMemo(
+    () => redoDepth(state) > 0,
+    [state]
+  );
+
+  const isCanRedo = useMemo(
+    () => undoDepth(state) > 0,
+    [state]
+  );
+
   return {
     getNodeType: _getNodeType,
     getMarkType: _getMarkType,
@@ -144,6 +173,10 @@ export function useMarkdown() {
     setBlockType: _setBlockType,
     wrapIn: _wrapIn,
     lift: _lift,
-    setTextAlign: _setTextAlign
+    setTextAlign: _setTextAlign,
+    undo: _undo,
+    redo: _redo,
+    isCanUndo,
+    isCanRedo
   };
 }

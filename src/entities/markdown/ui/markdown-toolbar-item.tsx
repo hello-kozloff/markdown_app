@@ -1,18 +1,11 @@
 "use client";
 
 import { ForwardRefExoticComponent } from "react";
-import {
-  ChevronDownIcon,
-  LucideProps
-} from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger
-} from "@/shared/ui/dropdown-menu";
+import { ChevronDownIcon, LucideProps } from "lucide-react";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/shared/ui/dropdown-menu";
 import { ToolbarItem } from "@/shared/ui/toolbar";
 import { useTranslations } from "next-intl";
+import { cn } from "@/shared/lib/utils";
 
 export interface MarkdownToolbarItemProps {
   name: string;
@@ -24,12 +17,14 @@ export interface MarkdownToolbarItemProps {
     "children"
   >[];
   isActive?: boolean;
+  isDisabled?: boolean;
   onClick?: () => void;
 }
 
 export function MarkdownToolbarItem({
   icon: IconComponent,
   isActive,
+  isDisabled,
   children,
   onClick
 }: MarkdownToolbarItemProps) {
@@ -38,10 +33,19 @@ export function MarkdownToolbarItem({
   if (!!children) {
     return (
       <DropdownMenu>
-        <DropdownMenuTrigger className="rounded-full">
+        <DropdownMenuTrigger
+          asChild
+          className="rounded-full"
+        >
           <ToolbarItem
             as="div"
             isActive={isActive}
+            disabled={isDisabled}
+            className={cn(
+              isActive
+                ? "data-[state=open]:bg-blue-500/15 data-[state=open]:border-border data-[state=open]:text-blue-500"
+                : "data-[state=open]:bg-white/5 data-[state=open]:text-white"
+            )}
           >
             <IconComponent size={16} />
             <ChevronDownIcon
@@ -73,6 +77,7 @@ export function MarkdownToolbarItem({
   return (
     <ToolbarItem
       isActive={isActive}
+      disabled={isDisabled}
       onClick={onClick}
     >
       <IconComponent size={16} />

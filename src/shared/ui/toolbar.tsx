@@ -56,7 +56,7 @@ export function ToolbarGroup({
   return (
     <div
       className={cn(
-        "px-2 flex gap-0.5 border-r last:border-r-0",
+        "px-2 flex gap-1 border-r last:border-r-0",
         className
       )}
     >
@@ -80,11 +80,11 @@ export function ToolbarItem<
       {...props}
       className={cn(
         className,
-        "p-2.5",
+        "p-2.5 border border-transparent",
         "flex gap-0.5 items-center",
-        "not-disabled:cursor-pointer transition ease-in-out rounded-full",
+        "not-disabled:cursor-pointer transition ease-in-out rounded-full data-[state=open]:border-border",
         {
-          "text-gray-400 hover:not-disabled:text-white hover:not-disabled:bg-white/5":
+          "text-gray-400 hover:not-disabled:text-white hover:not-disabled:bg-white/5 checked:bg-blue-500":
             !isActive,
           "text-blue-500 bg-blue-500/10 hover:bg-blue-500/15":
             isActive,
