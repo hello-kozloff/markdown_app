@@ -1,23 +1,23 @@
 "use client";
 
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, ReactNode } from "react";
 import { ProseMirror } from "@handlewithcare/react-prosemirror";
 import { proseMirrorViewPlugins } from "../model/plugins";
-import {
-  useMarkdownContext,
-  UseMarkdownContextOptions
-} from "@/entities/markdown";
+import { useMarkdownContext, UseMarkdownContextOptions } from "@/entities/markdown";
 
 export type MarkdownContextProps =
   PropsWithChildren<
     Pick<
       UseMarkdownContextOptions,
       "data"
-    >
+    > & {
+      skeleton: ReactNode;
+    }
   >;
 
 export function MarkdownContext({
   data,
+  skeleton,
   children
 }: MarkdownContextProps) {
   const {
@@ -28,9 +28,7 @@ export function MarkdownContext({
   });
 
   if (!editorState) {
-    return (
-      <div>Загрузка редактора...</div>
-    );
+    return skeleton;
   }
 
   return (

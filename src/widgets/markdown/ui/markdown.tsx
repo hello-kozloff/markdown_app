@@ -4,6 +4,7 @@ import {
   MarkdownContext,
   MarkdownToolbar
 } from "@/entities/markdown";
+import { MarkdownSkeleton } from "./markdown-skeleton";
 
 export interface MarkdownProps {
   name: string;
@@ -12,17 +13,18 @@ export interface MarkdownProps {
   disabled?: boolean;
   readonly?: boolean;
 }
-export function Markdown({
-  name,
-  data,
-  toolbar
-}: MarkdownProps) {
+export function Markdown(
+  props: MarkdownProps
+) {
   return (
-    <MarkdownContext data={data}>
-      {toolbar && (
+    <MarkdownContext
+      data={props.data}
+      skeleton={<MarkdownSkeleton />}
+    >
+      {props.toolbar && (
         <MarkdownToolbar
-          name={name}
-          toolbar={toolbar}
+          name={props.name}
+          toolbar={props.toolbar}
         />
       )}
       <MarkdownContent />

@@ -29,35 +29,37 @@ const data = `
 
 export default function DocumentPage() {
   return (
-    <Markdown
-      name="example"
-      data={data}
-      toolbar={[
-        [Undo, Redo],
-        [
-          Heading,
-          List,
-          Blockquote,
-          Image
-        ],
-        [
-          Bold,
-          Italic,
-          Underline,
-          Strike,
-          CodeInline,
-          Highlight,
-          Link
-        ],
-        [
-          AlignLeft,
-          AlignCenter,
-          AlignRight,
-          AlignJustify
-        ]
-      ]}
-      readonly
-      disabled
-    />
+    <div className="h-svh flex flex-col">
+      <Markdown
+        name="example"
+        data={data}
+        toolbar={[
+          [Undo, Redo],
+          [
+            Heading,
+            List,
+            Blockquote,
+            Image
+          ],
+          [
+            Bold,
+            Italic,
+            Underline,
+            Strike,
+            CodeInline,
+            Highlight,
+            Link
+          ],
+          [
+            AlignLeft,
+            AlignCenter,
+            AlignRight,
+            AlignJustify
+          ]
+        ]}
+        readonly
+        disabled
+      />
+    </div>
   );
 }
