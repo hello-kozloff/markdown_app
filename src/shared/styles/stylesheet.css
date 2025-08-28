@@ -119,6 +119,22 @@
   }
 }
 
+.text-align-left {
+  @apply text-left;
+}
+
+.text-align-center {
+  @apply text-center;
+}
+
+.text-align-right {
+  @apply text-right;
+}
+
+.text-align-justify {
+  @apply text-justify;
+}
+
 .prose {
   h4, h5, h6 {
     @apply text-base;

@@ -1,7 +1,10 @@
 "use client";
 
 import { JSX } from "react";
-import { Toolbar, ToolbarGroup } from "@/shared/ui/toolbar";
+import {
+  Toolbar,
+  ToolbarGroup
+} from "@/shared/ui/toolbar";
 import { generateKey } from "@/shared/lib/utils";
 
 export interface MarkdownToolbarProps {

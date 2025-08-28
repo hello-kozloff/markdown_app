@@ -15,19 +15,14 @@ export const schema = new Schema({
         return [
           "p",
           {
-            style: `text-align: ${align}`
+            class: `text-align-${align}`
           },
           0
         ];
       },
       parseDOM: [
         {
-          tag: "p",
-          getAttrs: (dom) => ({
-            align:
-              (dom as HTMLElement).style
-                .textAlign || "left"
-          })
+          tag: "p"
         }
       ]
     },
@@ -42,10 +37,11 @@ export const schema = new Schema({
       toDOM(node) {
         const { level, align } =
           node.attrs;
+
         return [
           `h${level}`,
           {
-            style: `text-align: ${align}`
+            class: `text-align-${align}`
           },
           0
         ];
@@ -53,12 +49,7 @@ export const schema = new Schema({
       parseDOM: [1, 2, 3, 4, 5, 6].map(
         (lvl) => ({
           tag: `h${lvl}`,
-          getAttrs: (dom) => ({
-            level: lvl,
-            align:
-              (dom as HTMLElement).style
-                .textAlign || "left"
-          })
+          attrs: { level: lvl }
         })
       )
     },
