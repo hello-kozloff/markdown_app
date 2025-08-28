@@ -1,4 +1,8 @@
-import { ButtonHTMLAttributes, ElementType, PropsWithChildren } from "react";
+import {
+  ButtonHTMLAttributes,
+  ElementType,
+  PropsWithChildren
+} from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/shared/lib/utils";
 import { PropsWithClassName } from "@/shared/types/utils";
