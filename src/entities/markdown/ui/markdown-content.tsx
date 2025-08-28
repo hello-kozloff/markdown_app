@@ -21,7 +21,7 @@ export function MarkdownContent() {
   return (
     <motion.div
       {...markdownContentMotion}
-      className="max-w-2xl mx-auto p-12 prose outline-0"
+      className="h-full max-w-2xl mx-auto p-12 prose outline-0"
     >
       <ProseMirrorDoc />
     </motion.div>
