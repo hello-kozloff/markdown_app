@@ -1,4 +1,5 @@
 import { JSX } from "react";
+import { AnimatePresence } from "framer-motion";
 import {
   MarkdownContent,
   MarkdownContext,
@@ -21,12 +22,14 @@ export function Markdown(
       data={props.data}
       skeleton={<MarkdownSkeleton />}
     >
-      {props.toolbar && (
-        <MarkdownToolbar
-          name={props.name}
-          toolbar={props.toolbar}
-        />
-      )}
+      <AnimatePresence>
+        {props.toolbar && (
+          <MarkdownToolbar
+            name={props.name}
+            toolbar={props.toolbar}
+          />
+        )}
+      </AnimatePresence>
       <MarkdownContent />
     </MarkdownContext>
   );

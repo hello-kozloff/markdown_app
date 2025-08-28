@@ -1,11 +1,29 @@
 "use client";
 
 import { ProseMirrorDoc } from "@handlewithcare/react-prosemirror";
+import { motion } from "framer-motion";
+
+export const markdownContentMotion = {
+  initial: {
+    opacity: 0
+  },
+  animate: {
+    opacity: 1
+  },
+  transition: {
+    duration: 1,
+    ease: "easeOut",
+    type: "tween"
+  }
+};
 
 export function MarkdownContent() {
   return (
-    <div className="max-w-2xl mx-auto p-12 prose outline-0">
+    <motion.div
+      {...markdownContentMotion}
+      className="max-w-2xl mx-auto p-12 prose outline-0"
+    >
       <ProseMirrorDoc />
-    </div>
+    </motion.div>
   );
 }

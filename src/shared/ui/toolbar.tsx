@@ -3,14 +3,18 @@ import {
   ElementType,
   PropsWithChildren
 } from "react";
+import { motion } from "framer-motion";
 import { cn } from "@/shared/lib/utils";
 import { PropsWithClassName } from "@/shared/types/utils";
+import { MotionNodeAnimationOptions } from "motion-dom";
 
 export type ToolbarProps =
   PropsWithClassName<
-    PropsWithChildren<{
-      sticky?: boolean;
-    }>
+    PropsWithChildren<
+      {
+        sticky?: boolean;
+      } & MotionNodeAnimationOptions
+    >
   >;
 
 export type ToolbarGroupProps =
@@ -30,10 +34,12 @@ export type ToolbarItemProps<
 export function Toolbar({
   sticky,
   className,
-  children
+  children,
+  ...props
 }: ToolbarProps) {
   return (
-    <div
+    <motion.div
+      {...props}
       className={cn(
         className,
         "flex border-b bg-background",
@@ -45,7 +51,7 @@ export function Toolbar({
       <div className="mx-auto p-2 flex">
         {children}
       </div>
-    </div>
+    </motion.div>
   );
 }
 

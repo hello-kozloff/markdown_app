@@ -1,9 +1,15 @@
 "use client";
 
-import { PropsWithChildren, ReactNode } from "react";
+import {
+  PropsWithChildren,
+  ReactNode
+} from "react";
 import { ProseMirror } from "@handlewithcare/react-prosemirror";
 import { proseMirrorViewPlugins } from "../model/plugins";
-import { useMarkdownContext, UseMarkdownContextOptions } from "@/entities/markdown";
+import {
+  useMarkdownContext,
+  UseMarkdownContextOptions
+} from "@/entities/markdown";
 
 export type MarkdownContextProps =
   PropsWithChildren<

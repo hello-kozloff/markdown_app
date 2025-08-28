@@ -1,3 +1,5 @@
+"use client";
+
 import { JSX } from "react";
 import {
   Toolbar,
@@ -10,12 +12,31 @@ export interface MarkdownToolbarProps {
   toolbar: (() => JSX.Element)[][];
 }
 
+export const markdownToolbarMotion = {
+  initial: {
+    opacity: 0,
+    y: -4
+  },
+  animate: {
+    opacity: 1,
+    y: 0
+  },
+  transition: {
+    duration: 0.4,
+    ease: "easeOut",
+    type: "tween"
+  }
+};
+
 export function MarkdownToolbar({
   name,
   toolbar
 }: MarkdownToolbarProps) {
   return (
-    <Toolbar sticky>
+    <Toolbar
+      {...markdownToolbarMotion}
+      sticky
+    >
       {toolbar.map((items, i) => (
         <ToolbarGroup
           key={generateKey(
