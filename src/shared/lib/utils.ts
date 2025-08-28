@@ -1,16 +1,7 @@
-import {
-  type ClassValue,
-  clsx
-} from "clsx";
+import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import {
-  MarkType,
-  NodeType
-} from "prosemirror-model";
-import {
-  EditorState,
-  Transaction
-} from "prosemirror-state";
+import { MarkType, NodeType } from "prosemirror-model";
+import { EditorState, Transaction } from "prosemirror-state";
 
 export function cn(
   ...inputs: ClassValue[]
@@ -85,35 +76,35 @@ export function setTextAlign(
 
     let applicable = false;
 
+    let tr = state.tr;
+
     state.doc.nodesBetween(
       $from.pos,
       $to.pos,
       (node, pos) => {
         if (
           node.isTextblock &&
-          node.type.spec.attrs?.align
+          node.type.spec.attrs
+            ?.align !== undefined
         ) {
           applicable = true;
-          if (dispatch) {
-            const attrs = {
-              ...node.attrs,
-              align
-            };
-            const tr =
-              state.tr.setNodeMarkup(
-                pos,
-                node.type,
-                attrs,
-                node.marks
-              );
-            dispatch(
-              tr.scrollIntoView()
-            );
-          }
-          return false;
+          const attrs = {
+            ...node.attrs,
+            align
+          };
+          tr = tr.setNodeMarkup(
+            pos,
+            node.type,
+            attrs,
+            node.marks
+          );
         }
       }
     );
+
+    if (applicable && dispatch) {
+      dispatch(tr.scrollIntoView());
+    }
 
     return applicable;
   };
