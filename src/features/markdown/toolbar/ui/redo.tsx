@@ -14,7 +14,7 @@ export function Redo() {
       name="redo"
       icon={Redo2Icon}
       onClick={markdown.redo}
-      isDisabled={markdown.isCanRedo}
+      isDisabled={!markdown.isCanRedo}
     />
   );
 }

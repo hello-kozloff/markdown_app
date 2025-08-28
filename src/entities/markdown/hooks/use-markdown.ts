@@ -155,12 +155,12 @@ export function useMarkdown() {
   );
 
   const isCanUndo = useMemo(
-    () => redoDepth(state) > 0,
+    () => undoDepth(state) > 0,
     [state]
   );
 
   const isCanRedo = useMemo(
-    () => undoDepth(state) > 0,
+    () => redoDepth(state) > 0,
     [state]
   );
 
