@@ -11,6 +11,15 @@ import {
 } from "lucide-react";
 import { MarkdownToolbarItem, useMarkdown } from "@/entities/markdown";
 
+export const icons = [
+  Heading1Icon,
+  Heading2Icon,
+  Heading3Icon,
+  Heading4Icon,
+  Heading5Icon,
+  Heading6Icon
+];
+
 export function Heading() {
   const markdown = useMarkdown();
   const nodeType =
@@ -27,21 +36,14 @@ export function Heading() {
       {Array.from({
         length: 6
       }).map((_, index) => {
-        const name = `heading-${index + 1}`;
-
-        const icon = [
-          Heading1Icon,
-          Heading2Icon,
-          Heading3Icon,
-          Heading4Icon,
-          Heading5Icon,
-          Heading6Icon
-        ][index];
+        const level = index + 1;
+        const name = `heading-${level}`;
+        const icon = icons[index];
 
         const isActive =
           markdown.isNodeActive(
             nodeType,
-            { level: index + 1 }
+            { level }
           );
 
         const onClick = () => {
@@ -55,7 +57,7 @@ export function Heading() {
 
           return markdown.setBlockType(
             nodeType,
-            { level: index + 1 }
+            { level }
           );
         };
 
