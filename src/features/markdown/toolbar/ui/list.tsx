@@ -18,7 +18,7 @@ export function List() {
       icon={ListIcon}
       isActive={list.isActive}
     >
-      {list.create()}
+      {list.items}
     </MarkdownToolbarItem>
   );
 }
