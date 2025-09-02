@@ -61,9 +61,17 @@ export async function parseMarkdownToProseMirrorDoc(
         thematicBreak: toPmNode(
           schema.nodes.paragraph
         ),
-        list: toPmNode(
-          schema.nodes.list
-        ),
+        list(node, state, parent) {
+          const listType = node.ordered
+            ? schema.nodes.ordered_list
+            : schema.nodes.bullet_list;
+
+          return toPmNode(listType)(
+            node,
+            state,
+            parent
+          );
+        },
         listItem: toPmNode(
           schema.nodes.list_item
         )

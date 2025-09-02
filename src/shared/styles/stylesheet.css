@@ -174,7 +174,7 @@
 
   p {
     &:not(:first-child) {
-      @apply mt-5;
+      @apply mt-4;
     }
   }
 
@@ -194,14 +194,6 @@
     @apply my-6 first:mt-0 py-1.5 pl-4 border-l-4;
   }
 
-  ol {
-    @apply my-6 pl-6;
-  }
-
-  ul, ol {
-    @apply pl-4 flex flex-col gap-2;
-  }
-
   .markdown-highlight {
     @apply p-px text-amber-500 bg-amber-500/10;
   }
@@ -209,4 +201,14 @@
 
 .no-scrollbar {
   @apply [scrollbar-width:none] [&::-webkit-scrollbar]:hidden;
+}
+
+.list-disc,
+.list-decimal {
+  @apply my-6 pl-4 grid gap-2;
+}
+
+.list-disc:first-child,
+.list-decimal:first-child {
+  @apply mt-0;
 }
