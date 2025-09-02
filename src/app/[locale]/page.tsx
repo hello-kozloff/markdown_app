@@ -6,12 +6,9 @@ import {
   AlignRight,
   Blockquote,
   Bold,
-  CodeInline,
   Heading,
   Highlight,
-  Image,
   Italic,
-  Link,
   List,
   Redo,
   Strike,
@@ -35,20 +32,13 @@ export default function RootPage() {
         data={data}
         toolbar={[
           [Undo, Redo],
-          [
-            Heading,
-            List,
-            Blockquote,
-            Image
-          ],
+          [Heading, List, Blockquote],
           [
             Bold,
             Italic,
             Underline,
             Strike,
-            CodeInline,
-            Highlight,
-            Link
+            Highlight
           ],
           [
             AlignLeft,
