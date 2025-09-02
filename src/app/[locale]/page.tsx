@@ -27,7 +27,7 @@ const data = `
 
 `;
 
-export default function DocumentPage() {
+export default function RootPage() {
   return (
     <div className="h-svh flex flex-col overflow-hidden">
       <Markdown
