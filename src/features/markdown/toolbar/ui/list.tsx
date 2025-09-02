@@ -1,38 +1,21 @@
 "use client";
 
 import { ListIcon } from "lucide-react";
-import { MarkdownToolbarItem, useMarkdown } from "@/entities/markdown";
+import { MarkdownToolbarItem } from "@/entities/markdown";
+import { useList } from "@/features/markdown/toolbar";
 
 export function List() {
-  const markdown = useMarkdown();
+  const list = useList();
 
   return (
     <MarkdownToolbarItem
       name="list"
       icon={ListIcon}
     >
-      {[
-        {
-          name: "bullet_list",
-          icon: ListIcon,
-          onClick: () =>
-            markdown.wrapIn(
-              markdown.getNodeType(
-                "bullet_list"
-              )
-            )
-        },
-        {
-          name: "ordered_list",
-          icon: ListIcon,
-          onClick: () =>
-            markdown.wrapIn(
-              markdown.getNodeType(
-                "ordered_list"
-              )
-            )
-        }
-      ]}
+      {list.createConfig([
+        "bullet_list",
+        "ordered_list"
+      ])}
     </MarkdownToolbarItem>
   );
 }

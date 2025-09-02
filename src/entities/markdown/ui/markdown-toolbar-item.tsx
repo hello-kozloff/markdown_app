@@ -14,7 +14,6 @@ import {
 import { ToolbarItem } from "@/shared/ui/toolbar";
 import { useTranslations } from "next-intl";
 import { cn } from "@/shared/lib/utils";
-import { useMarkdown } from "@/entities/markdown";
 
 export interface MarkdownToolbarItemProps {
   name: string;
@@ -38,7 +37,6 @@ export function MarkdownToolbarItem({
   onClick
 }: MarkdownToolbarItemProps) {
   const t = useTranslations("toolbar");
-  const markdown = useMarkdown();
 
   if (!!children) {
     return (
@@ -75,14 +73,7 @@ export function MarkdownToolbarItem({
                 }
                 variant={cn({
                   active:
-                    markdown.isNodeActive(
-                      markdown.getNodeType(
-                        "heading"
-                      ),
-                      {
-                        level: index + 1
-                      }
-                    )
+                    toolbarItem.isActive
                 })}
                 onClick={
                   toolbarItem.onClick
