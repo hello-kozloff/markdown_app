@@ -1,1 +1,18 @@
-"use client";import { ItalicIcon } from "lucide-react";import {  MarkdownToolbarItem,  useMarkdown} from "@/entities/markdown";export function Italic() {  const markdown = useMarkdown();  const markType =    markdown.getMarkType("em");  return (    <MarkdownToolbarItem      name="italic"      icon={ItalicIcon}      isActive={markdown.isMarkActive(        markType      )}      onClick={() =>        markdown.toggleMark(markType)      }    />  );}
+"use client";
+
+import { ItalicIcon } from "lucide-react";
+import { MarkdownToolbarItem } from "@/entities/markdown";
+import { useItalic } from "@/features/markdown/toolbar";
+
+export function Italic() {
+  const italic = useItalic();
+
+  return (
+    <MarkdownToolbarItem
+      name="italic"
+      icon={ItalicIcon}
+      isActive={italic.isActive}
+      onClick={italic.toggle}
+    />
+  );
+}

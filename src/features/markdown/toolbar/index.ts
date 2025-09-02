@@ -1,4 +1,11 @@
 export * from "./hooks/use-list";
+export * from "./hooks/use-blockquote";
+export * from "./hooks/use-bold";
+export * from "./hooks/use-italic";
+export * from "./hooks/use-highlight";
+export * from "./hooks/use-underline";
+export * from "./hooks/use-strike";
+export * from "./hooks/use-code-inline";
 
 export * from "./ui/undo";
 export * from "./ui/redo";

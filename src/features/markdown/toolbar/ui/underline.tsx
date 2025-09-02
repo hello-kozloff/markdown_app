@@ -1,27 +1,18 @@
 "use client";
 
 import { UnderlineIcon } from "lucide-react";
-import {
-  MarkdownToolbarItem,
-  useMarkdown
-} from "@/entities/markdown";
+import { MarkdownToolbarItem } from "@/entities/markdown";
+import { useUnderline } from "@/features/markdown/toolbar";
 
 export function Underline() {
-  const markdown = useMarkdown();
-  const markType = markdown.getMarkType(
-    "underline"
-  );
+  const underline = useUnderline();
 
   return (
     <MarkdownToolbarItem
       name="underline"
       icon={UnderlineIcon}
-      isActive={markdown.isMarkActive(
-        markType
-      )}
-      onClick={() =>
-        markdown.toggleMark(markType)
-      }
+      isActive={underline.isActive}
+      onClick={underline.toggle}
     />
   );
 }

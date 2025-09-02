@@ -1,34 +1,18 @@
 "use client";
 
 import { TextQuoteIcon } from "lucide-react";
-import {
-  MarkdownToolbarItem,
-  useMarkdown
-} from "@/entities/markdown";
+import { MarkdownToolbarItem } from "@/entities/markdown";
+import { useBlockquote } from "@/features/markdown/toolbar";
 
 export function Blockquote() {
-  const markdown = useMarkdown();
-  const nodeType = markdown.getNodeType(
-    "blockquote"
-  );
-
-  const handleClick = () => {
-    if (
-      markdown.isNodeActive(nodeType)
-    ) {
-      return markdown.lift();
-    }
-    return markdown.wrapIn(nodeType);
-  };
+  const blockquote = useBlockquote();
 
   return (
     <MarkdownToolbarItem
       name="blockquote"
       icon={TextQuoteIcon}
-      isActive={markdown.isNodeActive(
-        nodeType
-      )}
-      onClick={handleClick}
+      isActive={blockquote.isActive}
+      onClick={blockquote.toggle}
     />
   );
 }
