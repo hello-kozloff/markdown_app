@@ -20,7 +20,7 @@ const data = `
   
   # Getting started
   
-  Welcome to the *Simple Editor* template! This template integrates open source UI components and Tiptap extensions licensed under MIT.
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad beatae eaque facilis harum id iusto qui?
 
 `;
 

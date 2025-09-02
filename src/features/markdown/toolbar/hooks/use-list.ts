@@ -45,13 +45,17 @@ export function useList(
           ) {
             markdown.lift();
           } else {
+            if (isActive) {
+              markdown.lift();
+            }
+
             markdown.wrapIn(
               markdown.getNodeType(node)
             );
           }
         }
       })),
-    [markdown, props.nodes]
+    [isActive, markdown, props.nodes]
   );
 
   return { items, isActive };

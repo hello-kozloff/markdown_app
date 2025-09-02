@@ -205,7 +205,7 @@
 
 .list-disc,
 .list-decimal {
-  @apply my-6 pl-4 grid gap-2;
+  @apply mt-6 pl-4 grid gap-2;
 }
 
 .list-disc:first-child,
