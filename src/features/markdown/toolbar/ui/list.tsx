@@ -5,17 +5,20 @@ import { MarkdownToolbarItem } from "@/entities/markdown";
 import { useList } from "@/features/markdown/toolbar";
 
 export function List() {
-  const list = useList();
+  const list = useList({
+    nodes: [
+      "bullet_list",
+      "ordered_list"
+    ]
+  });
 
   return (
     <MarkdownToolbarItem
       name="list"
       icon={ListIcon}
+      isActive={list.isActive}
     >
-      {list.createConfig([
-        "bullet_list",
-        "ordered_list"
-      ])}
+      {list.create()}
     </MarkdownToolbarItem>
   );
 }

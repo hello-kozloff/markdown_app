@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import { ListIcon } from "lucide-react";
 import { useMarkdown } from "@/entities/markdown";
 
@@ -7,17 +7,31 @@ const icons = {
   ordered_list: ListIcon
 };
 
-export function useList() {
+export interface UseListProps {
+  nodes: (
+    | "bullet_list"
+    | "ordered_list"
+  )[];
+}
+
+export function useList(
+  props: UseListProps
+) {
   const markdown = useMarkdown();
 
-  const createConfig = useCallback(
-    (
-      nodes: (
-        | "bullet_list"
-        | "ordered_list"
-      )[]
-    ) =>
-      nodes.map((node) => ({
+  const isActive = useMemo(
+    () =>
+      props.nodes.some((node) =>
+        markdown.isNodeActive(
+          markdown.getNodeType(node)
+        )
+      ),
+    [markdown, props.nodes]
+  );
+
+  const create = useCallback(
+    () =>
+      props.nodes.map((node) => ({
         name: node,
         icon: icons[node],
         isActive: markdown.isNodeActive(
@@ -29,8 +43,8 @@ export function useList() {
           );
         }
       })),
-    [markdown]
+    [markdown, props.nodes]
   );
 
-  return { createConfig };
+  return { create, isActive };
 }
