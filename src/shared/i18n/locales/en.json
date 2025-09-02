@@ -10,8 +10,8 @@
     "heading-4": "Heading 4",
     "heading-5": "Heading 5",
     "heading-6": "Heading 6",
-    "bullet-list": "Bullet list",
-    "ordered-list": "Ordered list",
-    "task-list": "Task list"
+    "bullet_list": "Bullet list",
+    "ordered_list": "Ordered list",
+    "task_list": "Task list"
   }
 }
